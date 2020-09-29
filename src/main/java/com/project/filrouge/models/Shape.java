@@ -1,9 +1,15 @@
 package com.project.filrouge.models;
 
+import com.sun.istack.NotNull;
+
+import javax.persistence.Entity;
+import javax.persistence.GeneratedValue;
+import javax.persistence.Id;
+
+
 public class Shape {
     int sides;
     String name;
-    int size;
 
     public int getSides() {
         return sides;
@@ -11,10 +17,6 @@ public class Shape {
 
     public String getName() {
         return name;
-    }
-
-    public int getSize() {
-        return size;
     }
 
     public int setSides(int sides) {
@@ -25,11 +27,6 @@ public class Shape {
     public String setName(String name) {
         this.name = name;
         return name;
-    }
-
-    public int setSize(int size) {
-        this.size = size;
-        return size;
     }
 
 }

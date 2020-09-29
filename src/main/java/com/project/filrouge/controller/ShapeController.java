@@ -1,5 +1,6 @@
 package com.project.filrouge.controller;
 
+import com.project.filrouge.exceptions.NoShapeByIdException;
 import com.project.filrouge.models.*;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
@@ -44,7 +45,11 @@ public class ShapeController {
         Info1 = listeSquare.get(0).printSquare() + "<br>" + listeCircle.get(0).printCircle() + "<br>" + listeRectangle.get(0).printRectangle() + "<br>" + listeTriangle.get(0).printTriangle();
         Info2 = listeSquare.get(1).printSquare() + "<br>" + listeCircle.get(1).printCircle() + "<br>" + listeRectangle.get(1).printRectangle() + "<br>" + listeTriangle.get(1).printTriangle();
         Infos = this.Info1 + "<br><br>" + this.Info2;
-
-        return Infos;
+        if (this.Infos == null) {
+            throw new NoShapeByIdException("pas de formes trouvés");
+        } else {
+            return Infos;
+        }
     }
+
 }

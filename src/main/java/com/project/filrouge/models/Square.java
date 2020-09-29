@@ -1,9 +1,15 @@
 package com.project.filrouge.models;
 
-import java.util.Collection;
+import com.sun.istack.NotNull;
+
+import javax.persistence.Entity;
+import javax.persistence.GeneratedValue;
+import javax.persistence.Id;
 
 public class Square extends Shape {
     int id;
+
+    int size;
 
     public Square(String name, int sides, int size, int id) {
         int squareId = setId(id);
@@ -21,6 +27,10 @@ public class Square extends Shape {
         return squareInfo;
     }
 
+    private int getSize() {
+        return size;
+    }
+
     public int getId() {
         return id;
     }
@@ -28,5 +38,9 @@ public class Square extends Shape {
     public int setId(int id) {
         this.id = id;
         return id;
+    }
+    public int setSize(int size) {
+        this.size = size;
+        return size;
     }
 }

@@ -3,28 +3,28 @@ package com.project.filrouge.models;
 import javax.persistence.*;
 
 @Entity
-public class Square {
+public class Circle {
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-            @Column(updatable = false, nullable = false)
+    @Column(updatable = false, nullable = false)
     int id;
-    int size;
+    int rayon;
     String name;
 
-    public Square() {
+    public Circle() {
 
     }
 
-    public Square(int id, String name, int size) {
-        int squareId = setId(id);
-        String squareName = setName(name);
-        int squareSize = setSize(size);
-    }    @GeneratedValue
+    public Circle(int id, String name, int size) {
+        int circleId = setId(id);
+        String circleName = setName(name);
+        int circleSize = setSize(size);
+    }
 
 
     public String printSquare() {
-        String squareInfo = "Bonjour je suis : " + getName() + ", j'ai : 4 côtés, de tailles : " + getSize() + " cm, mon id est : " + getId();
+        String squareInfo = "Bonjour je suis : " + getName() + ", j'ai un rayon de : " + getSize() + " cm, mon id est : " + getId();
         return squareInfo;
     }
 
@@ -38,12 +38,12 @@ public class Square {
     }
 
     public int getSize() {
-        return size;
+        return rayon;
     }
 
-    public int setSize(int size) {
-        this.size = size;
-        return size;
+    public int setSize(int rayon) {
+        this.rayon = rayon;
+        return rayon;
     }
 
     public String getName() {
@@ -57,9 +57,9 @@ public class Square {
 
     @Override
     public String toString() {
-        return "Square{" +
+        return "Circle{" +
                 "id=" + id +
-                ", size=" + size +
+                ", rayon=" + rayon +
                 ", name='" + name + '\'' +
                 '}';
     }

@@ -26,24 +26,16 @@ public class SquareController {
 
     @ApiOperation(value = "Récupère tout les carrés éxistants dans la BDD")
     @RequestMapping(value="/Square", method= RequestMethod.GET)
-    public List<Square> listeSquare() {
+    public String listeSquare() {
        Iterable<Square> squares = squareDao.findAll();
 
-        SimpleBeanPropertyFilter monFiltre = SimpleBeanPropertyFilter.serializeAllExcept("size");
-
-        FilterProvider listDeNosFiltres = new SimpleFilterProvider().addFilter("monFiltreDynamique", monFiltre);
-
-        MappingJacksonValue produitsFiltres = new MappingJacksonValue(squares);
-
-        produitsFiltres.setFilters(listDeNosFiltres);
-
-        return squareDao.findAll();
+        return squares.toString();
     }
 
     @ApiOperation(value = "Récupère un carrés éxistant dans la BDD en fonction de son ID")
     @GetMapping(value = "/Square/{id}")
-    public Square afficherUnSquare(@PathVariable int id) {
-        return squareDao.findById(id);
+    public String afficherUnSquare(@PathVariable int id) {
+        return squareDao.findById(id).toString();
     }
 
     @ApiOperation(value = "Ajoute un carré dans la BDD")

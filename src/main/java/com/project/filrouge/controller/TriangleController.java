@@ -27,24 +27,16 @@ public class TriangleController {
 
     @ApiOperation(value = "Récupère tout les triangles éxistants dans la BDD")
     @RequestMapping(value="/Triangle", method= RequestMethod.GET)
-    public List<Triangle> listeSquare() {
+    public String listeSquare() {
         List<Triangle> triangles = triangleDao.findAll();
 
-        SimpleBeanPropertyFilter monFiltre = SimpleBeanPropertyFilter.serializeAllExcept("size");
-
-        FilterProvider listDeNosFiltres = new SimpleFilterProvider().addFilter("monFiltreDynamique", monFiltre);
-
-        MappingJacksonValue produitsFiltres = new MappingJacksonValue(triangles);
-
-        produitsFiltres.setFilters(listDeNosFiltres);
-
-        return triangleDao.findAll();
+        return triangles.toString();
     }
 
     @ApiOperation(value = "Récupère un triangle éxistant dans la BDD en fonction de son ID")
     @GetMapping(value = "/Triangle/{id}")
-    public Triangle afficherUnSquare(@PathVariable int id) {
-        return triangleDao.findById(id);
+    public String afficherUnSquare(@PathVariable int id) {
+        return triangleDao.findById(id).toString();
     }
 
     @ApiOperation(value = "Ajoute un triangle dans la BDD")

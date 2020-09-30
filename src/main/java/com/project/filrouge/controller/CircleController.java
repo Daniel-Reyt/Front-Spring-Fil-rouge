@@ -2,16 +2,11 @@ package com.project.filrouge.controller;
 
 import com.project.filrouge.models.Circle;
 
-import com.fasterxml.jackson.databind.ser.FilterProvider;
-import com.fasterxml.jackson.databind.ser.impl.SimpleBeanPropertyFilter;
-import com.fasterxml.jackson.databind.ser.impl.SimpleFilterProvider;
 import com.project.filrouge.dao.CircleDao;
 import io.swagger.annotations.Api;
 import io.swagger.annotations.ApiOperation;
-import org.hibernate.sql.Delete;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;
-import org.springframework.http.converter.json.MappingJacksonValue;
 import org.springframework.web.bind.annotation.*;
 import org.springframework.web.servlet.support.ServletUriComponentsBuilder;
 
@@ -27,24 +22,16 @@ public class CircleController {
 
     @ApiOperation(value = "Récupère tout les cercles éxistants dans la BDD")
     @RequestMapping(value="/Circle", method= RequestMethod.GET)
-    public List<Circle> listeSquare() {
+    public String listeSquare() {
         List<Circle> circles = circleDao.findAll();
 
-        SimpleBeanPropertyFilter monFiltre = SimpleBeanPropertyFilter.serializeAllExcept("size");
-
-        FilterProvider listDeNosFiltres = new SimpleFilterProvider().addFilter("monFiltreDynamique", monFiltre);
-
-        MappingJacksonValue produitsFiltres = new MappingJacksonValue(circles);
-
-        produitsFiltres.setFilters(listDeNosFiltres);
-
-        return circleDao.findAll();
+        return circles.toString();
     }
 
     @ApiOperation(value = "Récupère un cercle éxistant dans la BDD en fonction de son ID")
     @GetMapping(value = "/Circle/{id}")
-    public Circle afficherUnSquare(@PathVariable int id) {
-        return circleDao.findById(id);
+    public String afficherUnSquare(@PathVariable int id) {
+        return circleDao.findById(id).toString();
     }
 
     @ApiOperation(value = "Ajoute un cercle dans la BDD")

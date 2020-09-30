@@ -25,24 +25,16 @@ public class RectangleController {
 
     @ApiOperation(value = "Récupère tout les rectangles éxistants dans la BDD")
     @RequestMapping(value="/Rectangle", method= RequestMethod.GET)
-    public List<Rectangle> listeSquare() {
+    public String listeSquare() {
         List<Rectangle> rectangles = rectangleDao.findAll();
 
-        SimpleBeanPropertyFilter monFiltre = SimpleBeanPropertyFilter.serializeAllExcept("size");
-
-        FilterProvider listDeNosFiltres = new SimpleFilterProvider().addFilter("monFiltreDynamique", monFiltre);
-
-        MappingJacksonValue produitsFiltres = new MappingJacksonValue(rectangles);
-
-        produitsFiltres.setFilters(listDeNosFiltres);
-
-        return rectangleDao.findAll();
+        return rectangles.toString();
     }
 
     @ApiOperation(value = "Récupère un rectangle éxistant dans la BDD en fonction de son ID")
     @GetMapping(value = "/Rectangle/{id}")
-    public Rectangle afficherUnSquare(@PathVariable int id) {
-        return rectangleDao.findById(id);
+    public String afficherUnSquare(@PathVariable int id) {
+        return rectangleDao.findById(id).toString();
     }
 
     @ApiOperation(value = "Ajoute un rectangle dans la BDD")

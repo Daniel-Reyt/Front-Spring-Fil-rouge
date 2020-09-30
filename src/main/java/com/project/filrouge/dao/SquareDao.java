@@ -12,6 +12,4 @@ public interface SquareDao extends JpaRepository<Square, Integer> {
     Square findById(int id);
     Square save(Square square);
     Square deleteById(int id);
-    //    List<Square> findBySizeGreaterThan(int size);
-//    List<Square> findByNameLike(String recherche);
 }

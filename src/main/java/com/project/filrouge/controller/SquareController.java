@@ -1,0 +1,82 @@
+package com.project.filrouge.controller;
+
+import com.fasterxml.jackson.databind.ser.FilterProvider;
+import com.fasterxml.jackson.databind.ser.impl.SimpleBeanPropertyFilter;
+import com.fasterxml.jackson.databind.ser.impl.SimpleFilterProvider;
+import com.project.filrouge.dao.SquareDao;
+import com.project.filrouge.models.Square;
+import io.swagger.annotations.Api;
+import org.hibernate.sql.Delete;
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.http.ResponseEntity;
+import org.springframework.http.converter.json.MappingJacksonValue;
+import org.springframework.web.bind.annotation.*;
+import org.springframework.web.servlet.support.ServletUriComponentsBuilder;
+
+import java.net.URI;
+import java.util.List;
+
+@Api(description = "gestion de toutes les formes éxistantes")
+@RestController
+public class SquareController {
+
+    @Autowired
+    private SquareDao squareDao;
+
+    @RequestMapping(value="/Square", method= RequestMethod.GET)
+    public List<Square> listeSquare() {
+       Iterable<Square> squares = squareDao.findAll();
+
+        SimpleBeanPropertyFilter monFiltre = SimpleBeanPropertyFilter.serializeAllExcept("size");
+
+        FilterProvider listDeNosFiltres = new SimpleFilterProvider().addFilter("monFiltreDynamique", monFiltre);
+
+        MappingJacksonValue produitsFiltres = new MappingJacksonValue(squares);
+
+        produitsFiltres.setFilters(listDeNosFiltres);
+
+        return squareDao.findAll();
+    }
+
+    @GetMapping(value = "/Square/{id}")
+    public Square afficherUnSquare(@PathVariable int id) {
+        return squareDao.findById(id);
+    }
+
+    @PostMapping(value = "/Square")
+    public ResponseEntity<Void> ajouterProduit(@RequestBody Square square) {
+        Square productAdded =  squareDao.save(square);
+        if (productAdded == null)
+            return ResponseEntity.noContent().build();
+
+        URI location = ServletUriComponentsBuilder
+                .fromCurrentRequest()
+                .path("/{id}")
+                .buildAndExpand(productAdded.getId())
+                .toUri();
+        return ResponseEntity.created(location).build();
+    }
+    @DeleteMapping (value = "/Square/{id}")
+    public void supprimerUnSquare(@PathVariable int id) {
+
+       squareDao.deleteById(id);
+    }
+    @PutMapping (value = "/Square")
+    public void updateProduit(@RequestBody Square square) {
+
+        squareDao.save(square);
+    }
+//    @GetMapping(value = "/Square/{size}")
+//    public List<Square> testeDeRequetes(@PathVariable int size) {
+//        return squareDao.findBySizeGreaterThan(40);
+//    }
+//
+//    @GetMapping(value = "/Square/{recherche}")
+//    public List<Square> testeDeRequetes(@PathVariable String recherche) {
+//        return squareDao.findByNameLike("%"+recherche+"%");
+//    }
+}
+
+
+
+

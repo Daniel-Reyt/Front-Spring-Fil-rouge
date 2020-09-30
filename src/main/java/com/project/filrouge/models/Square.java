@@ -1,34 +1,32 @@
 package com.project.filrouge.models;
 
-import com.sun.istack.NotNull;
-
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.Id;
 
-public class Square extends Shape {
+@Entity
+public class Square {
+
+    @Id
+    @GeneratedValue
     int id;
 
     int size;
-
-    public Square(String name, int sides, int size, int id) {
-        int squareId = setId(id);
-        String squareName = setName(name);
-        int squareSides = setSides(sides);
-        int squareSize = setSize(size);
-    }
+    String name;
 
     public Square() {
 
     }
 
-    public String printSquare() {
-        String squareInfo = "Bonjour je suis : " + getName() + ", j'ai : " + getSides() + " côtés, de tailles : " + getSize() + " cm, mon id est : " + getId();
-        return squareInfo;
+    public Square(int id, String name, int size) {
+        int squareId = setId(id);
+        String squareName = setName(name);
+        int squareSize = setSize(size);
     }
 
-    private int getSize() {
-        return size;
+    public String printSquare() {
+        String squareInfo = "Bonjour je suis : " + getName() + ", j'ai : 4 côtés, de tailles : " + getSize() + " cm, mon id est : " + getId();
+        return squareInfo;
     }
 
     public int getId() {
@@ -39,8 +37,31 @@ public class Square extends Shape {
         this.id = id;
         return id;
     }
+
+    public int getSize() {
+        return size;
+    }
+
     public int setSize(int size) {
         this.size = size;
         return size;
+    }
+
+    public String getName() {
+        return name;
+    }
+
+    public String setName(String name) {
+        this.name = name;
+        return name;
+    }
+
+    @Override
+    public String toString() {
+        return "Square{" +
+                "id=" + id +
+                ", size=" + size +
+                ", name='" + name + '\'' +
+                '}';
     }
 }

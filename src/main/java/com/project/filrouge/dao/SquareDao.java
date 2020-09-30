@@ -8,8 +8,6 @@ import java.util.List;
 
 @Repository
 public interface SquareDao extends JpaRepository<Square, Integer> {
-    List<Square> findAll();
     Square findById(int id);
-    Square save(Square square);
     Square deleteById(int id);
 }

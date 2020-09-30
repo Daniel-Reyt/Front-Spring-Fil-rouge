@@ -1,16 +1,14 @@
 package com.project.filrouge.models;
 
-import javax.persistence.Entity;
-import javax.persistence.GeneratedValue;
-import javax.persistence.Id;
+import javax.persistence.*;
 
 @Entity
 public class Square {
 
     @Id
-    @GeneratedValue
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
+            @Column(updatable = false, nullable = false)
     int id;
-
     int size;
     String name;
 

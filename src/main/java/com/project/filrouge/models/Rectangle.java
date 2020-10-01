@@ -3,7 +3,7 @@ package com.project.filrouge.models;
 import javax.persistence.*;
 
 @Entity
-public class Rectangle {
+public class Rectangle extends Shape {
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)

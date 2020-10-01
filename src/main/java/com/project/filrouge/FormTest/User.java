@@ -3,7 +3,7 @@ package com.project.filrouge.FormTest;
 public class User {
 
     private String name;
-    private String occupation;
+    private int size;
 
     public String getName() {
         return name;
@@ -13,11 +13,11 @@ public class User {
         this.name = name;
     }
 
-    public String getOccupation() {
-        return occupation;
+    public int getSize() {
+        return size;
     }
 
-    public void setOccupation(String occupation) {
-        this.occupation = occupation;
+    public void setSize(int size) {
+        this.size = size;
     }
 }

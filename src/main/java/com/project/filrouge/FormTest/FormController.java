@@ -16,12 +16,12 @@ public class FormController {
         modelAndView.setViewName("index");
         return modelAndView;
     }
-//
-//    @PostMapping("/addUser")
-//    @ResponseBody
-//    public String processForm(User user) {
-//
-//        return "/Square";
-//    }
+
+    @PostMapping("/addUser")
+    @ResponseBody
+    public String processForm(User user) {
+        String information = "Bonjour je suis" + user.getName() + ", mes côtés font " + user.getSize() + " cm";
+        return information;
+    }
 
 }

@@ -5,6 +5,7 @@ import com.fasterxml.jackson.databind.ser.impl.SimpleBeanPropertyFilter;
 import com.fasterxml.jackson.databind.ser.impl.SimpleFilterProvider;
 import com.project.filrouge.dao.RectangleDao;
 import com.project.filrouge.models.Rectangle;
+import com.project.filrouge.models.Square;
 import io.swagger.annotations.Api;
 import io.swagger.annotations.ApiOperation;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -27,8 +28,11 @@ public class RectangleController {
     @RequestMapping(value="/Rectangle", method= RequestMethod.GET)
     public String listeSquare() {
         List<Rectangle> rectangles = rectangleDao.findAll();
-
-        return rectangles.toString();
+        String q = "";
+        for (Rectangle rectangle : rectangles) {
+            q += rectangle.printRectangle() + "<br>" ;
+        }
+        return q;
     }
 
     @ApiOperation(value = "Récupère un rectangle éxistant dans la BDD en fonction de son ID")

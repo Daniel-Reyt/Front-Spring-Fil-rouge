@@ -3,7 +3,7 @@ package com.project.filrouge.models;
 import javax.persistence.*;
 
 @Entity
-public class Circle {
+public class Circle extends Shape {
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
@@ -23,7 +23,7 @@ public class Circle {
     }
 
 
-    public String printSquare() {
+    public String printCircle() {
         String squareInfo = "Bonjour je suis : " + getName() + ", j'ai un rayon de : " + getSize() + " cm, mon id est : " + getId();
         return squareInfo;
     }

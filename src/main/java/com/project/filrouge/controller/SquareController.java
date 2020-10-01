@@ -1,16 +1,11 @@
 package com.project.filrouge.controller;
 
-import com.fasterxml.jackson.databind.ser.FilterProvider;
-import com.fasterxml.jackson.databind.ser.impl.SimpleBeanPropertyFilter;
-import com.fasterxml.jackson.databind.ser.impl.SimpleFilterProvider;
 import com.project.filrouge.dao.SquareDao;
 import com.project.filrouge.models.Square;
 import io.swagger.annotations.Api;
 import io.swagger.annotations.ApiOperation;
-import org.hibernate.sql.Delete;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;
-import org.springframework.http.converter.json.MappingJacksonValue;
 import org.springframework.web.bind.annotation.*;
 import org.springframework.web.servlet.support.ServletUriComponentsBuilder;
 
@@ -28,8 +23,11 @@ public class SquareController {
     @RequestMapping(value="/Square", method= RequestMethod.GET)
     public String listeSquare() {
        Iterable<Square> squares = squareDao.findAll();
-
-        return squares.toString();
+       String q = "";
+        for (Square square : squares) {
+            q += square.printSquare() + "<br>" ;
+        }
+        return q;
     }
 
     @ApiOperation(value = "Récupère un carrés éxistant dans la BDD en fonction de son ID")

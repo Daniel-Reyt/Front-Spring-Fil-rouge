@@ -25,7 +25,7 @@ public class Rectangle {
     }    @GeneratedValue
 
 
-    public String printSquare() {
+    public String printRectangle() {
         String squareInfo = "Bonjour je suis : " + getName() + ", j'ai : 4 côtés, de longeur : " + getLongeur() + " cm, et de largeur : " + getLargeur()+ " cm, mon id est : " + getId();
         return squareInfo;
     }

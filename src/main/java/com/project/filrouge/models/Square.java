@@ -24,7 +24,7 @@ public class Square {
 
 
     public String printSquare() {
-        String squareInfo = "Bonjour je suis : " + getName() + ", j'ai : 4 côtés, de tailles : " + getSize() + " cm, mon id est : " + getId();
+        String squareInfo = "Bonjour je suis : " + getName() + ", j'ai : 4 côtés, de taille : " + getSize() + " cm, mon id est : " + getId();
         return squareInfo;
     }
 

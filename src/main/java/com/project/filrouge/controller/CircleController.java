@@ -3,6 +3,7 @@ package com.project.filrouge.controller;
 import com.project.filrouge.models.Circle;
 
 import com.project.filrouge.dao.CircleDao;
+import com.project.filrouge.models.Square;
 import io.swagger.annotations.Api;
 import io.swagger.annotations.ApiOperation;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -24,8 +25,11 @@ public class CircleController {
     @RequestMapping(value="/Circle", method= RequestMethod.GET)
     public String listeSquare() {
         List<Circle> circles = circleDao.findAll();
-
-        return circles.toString();
+        String q = "";
+        for (Circle circle : circles) {
+            q += circle.printCircle() + "<br>" ;
+        }
+        return q;
     }
 
     @ApiOperation(value = "Récupère un cercle éxistant dans la BDD en fonction de son ID")
@@ -37,14 +41,14 @@ public class CircleController {
     @ApiOperation(value = "Ajoute un cercle dans la BDD")
     @PostMapping(value = "/Circle")
     public ResponseEntity<Void> ajouterProduit(@RequestBody Circle circle) {
-        Circle productAdded =  circleDao.save(circle);
-        if (productAdded == null)
+        Circle circle1 =  circleDao.save(circle);
+        if (circle1 == null)
             return ResponseEntity.noContent().build();
 
         URI location = ServletUriComponentsBuilder
                 .fromCurrentRequest()
                 .path("/{id}")
-                .buildAndExpand(productAdded.getId())
+                .buildAndExpand(circle1.getId())
                 .toUri();
         return ResponseEntity.created(location).build();
     }

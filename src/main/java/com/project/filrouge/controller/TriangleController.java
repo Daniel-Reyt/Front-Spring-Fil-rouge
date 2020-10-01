@@ -6,6 +6,7 @@ import com.fasterxml.jackson.databind.ser.impl.SimpleFilterProvider;
 import com.project.filrouge.dao.CircleDao;
 import com.project.filrouge.dao.TriangleDao;
 import com.project.filrouge.models.Circle;
+import com.project.filrouge.models.Square;
 import com.project.filrouge.models.Triangle;
 import io.swagger.annotations.Api;
 import io.swagger.annotations.ApiOperation;
@@ -29,8 +30,11 @@ public class TriangleController {
     @RequestMapping(value="/Triangle", method= RequestMethod.GET)
     public String listeSquare() {
         List<Triangle> triangles = triangleDao.findAll();
-
-        return triangles.toString();
+        String q = "";
+        for (Triangle triangle : triangles) {
+            q += triangle.printTriangle() + "<br>" ;
+        }
+        return q;
     }
 
     @ApiOperation(value = "Récupère un triangle éxistant dans la BDD en fonction de son ID")

@@ -27,8 +27,8 @@ public class DessinCollection {
     @GetMapping("calculTotal")
     public String calculTotalPeri() {
         String q = "";
-        q += "périmètre totale = " + calculPeriSquare() + calculPeriRectangle() + calculPeriTriangle() + calculPeriCircle() + " cm" + "<br>" +
-                "Aire totale = " + calculAireSquare() + calculAireRectangle() + calculAireTriangle() + calculAireCircle() + " cm²";
+        q += "<h1> périmètre total = " + calculPeriSquare() + calculPeriRectangle() + calculPeriTriangle() + calculPeriCircle() + " cm </h1" + "<br>" +
+                "<h1> Aire totale = " + calculAireSquare() + calculAireRectangle() + calculAireTriangle() + calculAireCircle() + " cm² </h1";
         return q;
     }
 

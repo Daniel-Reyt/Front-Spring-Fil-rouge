@@ -12,14 +12,13 @@
     </div>
     <br>
     <div class="col-lg-12">
-        <form action="#" class="form-group" style="padding: 30px; border-width: 2px; border-color: #000000; border-style: solid; border-radius: 30px">
+        <form class="form-group" style="padding: 30px; border-width: 2px; border-color: #000000; border-style: solid; border-radius: 30px">
             <button class="btn btn-primary form-control col-lg-12" onclick="Carre()">Carré</button>
             <br>
             <button class="btn btn-primary form-control col-lg-12" onclick="Rectangle()">Rectangle</button>
             <br>
-<!--            <br>-->
-<!--            <button class="btn btn-primary form-control col-lg-12" onclick="Cercle()">Cercle</button>-->
-<!--            <br>-->
+            <button class="btn btn-primary form-control col-lg-12" onclick="Cercle()">Cercle</button>
+            <br>
 <!--            <br>-->
 <!--            <button class="btn btn-primary form-control col-lg-12" onclick="Triangle()">Triangle</button>-->
         </form>
@@ -51,9 +50,6 @@
         const color = document.getElementById('color').value;
         console.log(size + " cm, position X : " + posX + ", position Y : " + posY)
 
-        const form = document.getElementById('form-group').value;
-        console.log(form)
-
         const canvas = document.getElementById("canvas");
         let ctx = canvas.getContext("2d");
         ctx.fillStyle = color;
@@ -83,32 +79,37 @@
             const posY = document.getElementById('posY').value;
             const color = document.getElementById('color').value;
 
-            const form = document.getElementById('form-group').value;
-
             const canvas = document.getElementById("canvas");
             let ctx = canvas.getContext("2d");
             ctx.fillStyle = color;
             const rec = ctx.fillRect(posX, posY, longeur, largeur);
         }
     }
-    // function Cercle() {
-    //     Swal.fire({
-    //         title: "Créer un cercle :",
-    //         html:  "<form class='form-group'>" +
-    //             "<input name='rayon' id='rayon' type='number' placeholder='merci de rentrer la rayon du cercle' class='form-control'> <br>" +
-    //             "<input name='name' id='name' type='text' placeholder='merci de rentrer le nom du cercle' class='form-control'> <br>" +
-    //             "<button type='submit' class='btn btn-primary'>Submit</button>" +
-    //             "</form>",
-    //         showConfirmButton: false,
-    //     }).then(() => {
-    //         const name = document.getElementById('name');
-    //         const rayon = document.getElementById('rayon');
-    //
-    //         document.querySelector('form-group').addEventListener('submit', function (e) {
-    //             e.preventDefault();
-    //         })
-    //     });
-    // }
+    function Cercle() {
+        Swal.fire({
+            title: "Créer un cercle :",
+            html:  "<form class='form-group'>" +
+                "<input name='rayon' id='rayon' type='number' placeholder='merci de rentrer la rayon du cercle' class='form-control'> <br>" +
+                "<input name='color' id='color' type='color' placeholder='merci de rentrer la couleur du cercle' class='form-control'> <br>" +
+                "<input name='posX' id='posX' type='number' placeholder='merci de rentrer la position X du cercle' class='form-control'> <br>" +
+                "<input name='posY' id='posY' type='number' placeholder='merci de rentrer la position Y du cercle' class='form-control'> <br>" +
+                "<button onclick='addCir()' class='btn btn-primary'>Submit</button>" +
+                "</form>",
+            showConfirmButton: false,
+        })
+    }
+    function addCir() {
+        const rayon = document.getElementById('rayon').value;
+        const posX = document.getElementById('posX').value;
+        const posY = document.getElementById('posX').value;
+        const color = document.getElementById('color').value;
+
+        const canvas = document.getElementById("canvas");
+        let ctx = canvas.getContext("2d");
+        ctx.fillStyle = color;
+        ctx.arc(posX, posY, rayon , 0, Math.PI * 2);
+        ctx.fill();
+    }
     // function Triangle() {
     //     Swal.fire({
     //         title: "Créer un triangle :",

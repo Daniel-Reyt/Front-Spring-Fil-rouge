@@ -30,7 +30,7 @@ public class RectangleController {
         List<Rectangle> rectangles = rectangleDao.findAll();
         String q = "";
         for (Rectangle rectangle : rectangles) {
-            q += rectangle.printRectangle() + "<br>" ;
+            q += rectangle.printRectangle() + "<br><br>" ;
         }
         return q;
     }

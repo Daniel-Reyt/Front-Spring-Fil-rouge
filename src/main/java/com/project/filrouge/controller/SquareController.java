@@ -25,7 +25,7 @@ public class SquareController {
        Iterable<Square> squares = squareDao.findAll();
        String q = "";
         for (Square square : squares) {
-            q += square.printSquare() + "<br>" ;
+            q += square.printSquare() + "<br><br>" ;
         }
         return q;
     }

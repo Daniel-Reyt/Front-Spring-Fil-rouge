@@ -3,7 +3,7 @@ package com.project.filrouge.models;
 import javax.persistence.*;
 
 @Entity
-public class Rectangle extends Shape {
+public class Rectangle extends Shape implements Calcul {
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
@@ -26,7 +26,8 @@ public class Rectangle extends Shape {
 
 
     public String printRectangle() {
-        String squareInfo = "Bonjour je suis : " + getName() + ", j'ai : 4 côtés, de longeur : " + getLongeur() + " cm, et de largeur : " + getLargeur()+ " cm, mon id est : " + getId();
+        String squareInfo = "Bonjour je suis : " + getName() + ", j'ai : 4 côtés, de longeur : " + getLongeur() + " cm, et de largeur : " + getLargeur()+ " cm, mon id est : " + getId() + "<br>" +
+                "mon périmètre est de : " + calculPeri() + " cm, et mon aire est de : " + calculAire() + " cm²";
         return squareInfo;
     }
 
@@ -71,5 +72,15 @@ public class Rectangle extends Shape {
                 ", largeur=" + largeur +
                 ", name='" + name + '\'' +
                 '}';
+    }
+
+    @Override
+    public double calculPeri() {
+        return (getLongeur() + getLargeur()) * 2;
+    }
+
+    @Override
+    public double calculAire() {
+        return getLongeur() * getLargeur();
     }
 }

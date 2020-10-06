@@ -3,7 +3,7 @@ package com.project.filrouge.models;
 import javax.persistence.*;
 
 @Entity
-public class Circle extends Shape {
+public class Circle extends Shape implements Calcul {
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
@@ -24,7 +24,8 @@ public class Circle extends Shape {
 
 
     public String printCircle() {
-        String squareInfo = "Bonjour je suis : " + getName() + ", j'ai un rayon de : " + getSize() + " cm, mon id est : " + getId();
+        String squareInfo = "Bonjour je suis : " + getName() + ", j'ai un rayon de : " + getSize() + " cm, mon id est : " + getId() + "<br>" +
+                "mon périmètre est de : " + calculPeri() + " cm, et mon aire est de : " + calculAire() + " cm²";
         return squareInfo;
     }
 
@@ -62,5 +63,16 @@ public class Circle extends Shape {
                 ", rayon=" + rayon +
                 ", name='" + name + '\'' +
                 '}';
+    }
+
+
+    @Override
+    public double calculPeri() {
+        return (3.14 * 2) * getSize();
+    }
+
+    @Override
+    public double calculAire() {
+        return 3.14 * (getSize() * getSize());
     }
 }

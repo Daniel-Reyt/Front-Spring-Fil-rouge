@@ -27,7 +27,7 @@ public class CircleController {
         List<Circle> circles = circleDao.findAll();
         String q = "";
         for (Circle circle : circles) {
-            q += circle.printCircle() + "<br>" ;
+            q += circle.printCircle() + "<br><br>" ;
         }
         return q;
     }

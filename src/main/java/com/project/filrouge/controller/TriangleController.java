@@ -32,7 +32,7 @@ public class TriangleController {
         List<Triangle> triangles = triangleDao.findAll();
         String q = "";
         for (Triangle triangle : triangles) {
-            q += triangle.printTriangle() + "<br>" ;
+            q += triangle.printTriangle() + "<br><br>" ;
         }
         return q;
     }

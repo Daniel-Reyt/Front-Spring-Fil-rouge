@@ -14,16 +14,18 @@
     <div class="col-lg-12">
         <form action="#" class="form-group" style="padding: 30px; border-width: 2px; border-color: #000000; border-style: solid; border-radius: 30px">
             <button class="btn btn-primary form-control col-lg-12" onclick="Carre()">Carré</button>
-<!--      th:action="@{/addUser}"       <br>-->
-<!--            <br>-->
-<!--            <button class="btn btn-primary form-control col-lg-12" onclick="Rectangle()">Rectangle</button>-->
-<!--            <br>-->
+            <br>
+            <button class="btn btn-primary form-control col-lg-12" onclick="Rectangle()">Rectangle</button>
+            <br>
 <!--            <br>-->
 <!--            <button class="btn btn-primary form-control col-lg-12" onclick="Cercle()">Cercle</button>-->
 <!--            <br>-->
 <!--            <br>-->
 <!--            <button class="btn btn-primary form-control col-lg-12" onclick="Triangle()">Triangle</button>-->
         </form>
+    </div>
+    <div class=" col-lg-12">
+        <canvas id="canvas" class="col-lg-12" style="border-color: black; border-style:  solid; border-width: 1px;"></canvas>
     </div>
 </div>
 
@@ -32,42 +34,63 @@
     function Carre() {
         Swal.fire({
             title: "Créer un carré :",
-            html:  "<form class='form-group'>" +
-            "<input name='size' id='size' type='number' placeholder='merci de rentrer la taille du carré' class='form-control'> <br>" +
-            "<input name='name' id='name' type='text' placeholder='merci de rentrer le nom du carré' class='form-control'> <br>" +
-            "<input name='id' id='id' type='number' placeholder='merci de rentrer l id du carré' class='form-control'> <br>" +
-            "<button type='submit' class='btn btn-primary'>Submit</button>" +
-            "</form>",
+            html: "<form class='form-group' id='form-group'>" +
+                "<input name='size' id='size' type='number' placeholder='merci de rentrer la taille du carré' class='form-control'> <br>" +
+                "<input name='color' id='color' type='color' placeholder='merci de rentrer la couleur du carré' class='form-control'> <br>" +
+                "<input name='posX' id='posX' type='number' placeholder='merci de rentrer la position X du carré' class='form-control'> <br>" +
+                "<input name='posY' id='posY' type='number' placeholder='merci de rentrer la position Y du carré' class='form-control'> <br>" +
+                "<button type='button' onclick='addSq()' class='btn btn-primary'>Submit</button>" +
+                "</form>",
             showConfirmButton: false,
-        }).then(() => {
-            const name = document.getElementById('name');
-            const size = document.getElementById('size');
-
-            document.querySelector('form-group').addEventListener('submit', function (e) {
-                e.preventDefault();
-            })
-        });
+        })
     }
-    // function Rectangle() {
-    //     Swal.fire({
-    //         title: "Créer un rectangle : ",
-    //         html:  "<form class='form-group'>" +
-    //             "<input name='long' id='long' type='number' placeholder='merci de rentrer la longeur du rectangle' class='form-control'> <br>" +
-    //             "<input name='larg' id='larg' type='number' placeholder='merci de rentrer la largeur du rectangle' class='form-control'> <br>" +
-    //             "<input name='name' id='name' type='text' placeholder='merci de rentrer le nom du rectangle' class='form-control'> <br>" +
-    //             "<button type='submit' class='btn btn-primary'>Submit</button>" +
-    //             "</form>",
-    //         showConfirmButton: false,
-    //     }).then(() => {
-    //         const name = document.getElementById('name');
-    //         const long = document.getElementById('long');
-    //         const larg = document.getElementById('larg');
-    //
-    //         document.querySelector('form-group').addEventListener('submit', function (e) {
-    //             e.preventDefault();
-    //         })
-    //     });
-    // }
+    function addSq() {
+        const size = document.getElementById('size').value;
+        const posX = document.getElementById('posX').value;
+        const posY = document.getElementById('posY').value;
+        const color = document.getElementById('color').value;
+        console.log(size + " cm, position X : " + posX + ", position Y : " + posY)
+
+        const form = document.getElementById('form-group').value;
+        console.log(form)
+
+        const canvas = document.getElementById("canvas");
+        let ctx = canvas.getContext("2d");
+        ctx.fillStyle = color;
+        ctx.fillRect(posX, posY, size, size);
+    }
+    function Rectangle() {
+        Swal.fire({
+            title: "Créer un Rectangle :",
+            html: "<form class='form-group' id='form-group'>" +
+                "<input name='longeur' id='longeur' type='number' placeholder='merci de rentrer la longeur du rectangle' class='form-control'> <br>" +
+                "<input name='largeur' id='largeur' type='number' placeholder='merci de rentrer la largeur du rectangle' class='form-control'> <br>" +
+                "<input name='color' id='color' type='color' placeholder='merci de rentrer la couleur du rectangle' class='form-control'> <br>" +
+                "<input name='posX' id='posX' type='number' placeholder='merci de rentrer la position X du carré' class='form-control'> <br>" +
+                "<input name='posY' id='posY' type='number' placeholder='merci de rentrer la position Y du carré' class='form-control'> <br>" +
+                "<button type='button' onclick='addRec()' class='btn btn-primary'>Submit</button>" +
+                "</form>",
+            showConfirmButton: false,
+        })
+    }
+    function addRec() {
+        if (largeur == longeur) {
+            Rectangle();
+        } else {
+            const longeur = document.getElementById('longeur').value;
+            const largeur = document.getElementById('largeur').value;
+            const posX = document.getElementById('posX').value;
+            const posY = document.getElementById('posY').value;
+            const color = document.getElementById('color').value;
+
+            const form = document.getElementById('form-group').value;
+
+            const canvas = document.getElementById("canvas");
+            let ctx = canvas.getContext("2d");
+            ctx.fillStyle = color;
+            const rec = ctx.fillRect(posX, posY, longeur, largeur);
+        }
+    }
     // function Cercle() {
     //     Swal.fire({
     //         title: "Créer un cercle :",
@@ -109,6 +132,82 @@
     //         })
     //     });
     // }
+    // wait for the content of the window element
+    // to load, then performs the operations.
+    // This is considered best practice.
+    window.addEventListener('load', ()=>{
+
+        resize(); // Resizes the canvas once the window loads
+        document.addEventListener('mousedown', startPainting);
+        document.addEventListener('mouseup', stopPainting);
+        document.addEventListener('mousemove', sketch);
+        window.addEventListener('resize', resize);
+    });
+
+    const canvas = document.querySelector('#canvas');
+
+    // Context for the canvas for 2 dimensional operations
+    const ctx = canvas.getContext('2d');
+
+    // Resizes the canvas to the available size of the window.
+    function resize(){
+        ctx.canvas.width = window.innerWidth;
+        ctx.canvas.height = window.innerHeight;
+    }
+
+    // Stores the initial position of the cursor
+    let coord = {x:0 , y:0};
+
+    // This is the flag that we are going to use to
+    // trigger drawing
+    let paint = false;
+
+    // Updates the coordianates of the cursor when
+    // an event e is triggered to the coordinates where
+    // the said event is triggered.
+    function getPosition(event){
+        coord.x = event.clientX - canvas.offsetLeft;
+        coord.y = event.clientY - canvas.offsetTop;
+    }
+
+    // The following functions toggle the flag to start
+    // and stop drawing
+    function startPainting(event){
+        paint = true;
+        getPosition(event);
+    }
+    function stopPainting(){
+        paint = false;
+    }
+
+    function sketch(event){
+        if (!paint) return;
+        ctx.beginPath();
+
+        ctx.lineWidth = 5;
+
+        // Sets the end of the lines drawn
+        // to a round shape.
+        ctx.lineCap = 'round';
+
+        ctx.strokeStyle = 'green';
+
+        // The cursor to start drawing
+        // moves to this coordinate
+        ctx.moveTo(coord.x, coord.y);
+
+        // The position of the cursor
+        // gets updated as we move the
+        // mouse around.
+        getPosition(event);
+
+        // A line is traced from start
+        // coordinate to this coordinate
+        ctx.lineTo(coord.x , coord.y);
+
+        // Draws the line.
+        ctx.stroke();
+    }
 </script>
 <script src="https://cdn.jsdelivr.net/npm/sweetalert2@10"></script>
 </html>

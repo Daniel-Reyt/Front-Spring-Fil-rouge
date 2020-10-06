@@ -3,7 +3,7 @@ package com.project.filrouge.models;
 import javax.persistence.*;
 
 @Entity
-public class Square extends Shape {
+public class Square extends Shape implements Calcul {
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
@@ -24,7 +24,8 @@ public class Square extends Shape {
 
 
     public String printSquare() {
-        String squareInfo = "Bonjour je suis : " + getName() + ", j'ai : 4 côtés, de taille : " + getSize() + " cm, mon id est : " + getId();
+        String squareInfo = "Bonjour je suis : " + getName() + ", j'ai : 4 côtés, de taille : " + getSize() + " cm, mon id est : " + getId() + "<br>" +
+                "mon périmètre est de : " + calculPeri() + " cm, et mon aire est de : " + calculAire() + " cm²";
         return squareInfo;
     }
 
@@ -62,5 +63,15 @@ public class Square extends Shape {
                 ", size=" + size +
                 ", name='" + name + '\'' +
                 '}';
+    }
+
+    @Override
+    public double calculPeri() {
+        return getSize() * 4;
+    }
+
+    @Override
+    public double calculAire() {
+        return getSize() * getSize();
     }
 }

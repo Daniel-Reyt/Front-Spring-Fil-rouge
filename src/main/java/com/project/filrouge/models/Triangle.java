@@ -28,7 +28,7 @@ public class Triangle extends Shape {
 
 
     public String printTriangle() {
-        String squareInfo = "Bonjour je suis : " + getName() + ", j'ai : 3 côtés, mon côté A est de : " + getSizeA() + " cm, mon côté B est de : " + getSizeB() + " cm, mon côté C est de : " + getSizeC() + " cm, mon id est : " + getId();
+        String squareInfo = "Bonjour je suis : " + getName() + ", j'ai : 3 côtés, mon côté A est de : " + getSizeA() + " cm, mon côté B est de : " + getSizeB() + " cm, mon côté C est de : " + getSizeC() + " cm, mon id est : " + getId() + "<br>";
         return squareInfo;
     }
 

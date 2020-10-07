@@ -62,11 +62,8 @@ public class SquareController {
     @ApiOperation(value = "Modifie un carrés éxistants dans la BDD en fonction de son ID")
     @PutMapping (value = "/Square")
     public void updateProduit(@RequestBody Square square) {
-
         squareDao.save(square);
     }
-
-
 }
 
 

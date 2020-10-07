@@ -8,26 +8,29 @@
 <body>
 <div class="container">
     <div class="col-lg-12" style="text-align: center; border-width: 2px; border-color: black; border-style: solid; border-radius: 30px">
-        <h1>Ajouter une forme :</h1>
+        <h1>Gestionnaire des formes :</h1>
     </div>
     <br>
     <div class="col-lg-12">
         <form action="#" class="form-group" style="padding: 30px; border-width: 2px; border-color: #000000; border-style: solid; border-radius: 30px">
             <button class="btn btn-primary form-control col-lg-12" onclick="addCarre()">Ajouter un carré</button>
-            <button class="btn btn-primary form-control col-lg-12" onclick="deleteCarre()">Supprimer un carré</button>
+            <button class="btn btn-danger form-control col-lg-12" onclick="deleteCarre()">Supprimer un carré</button>
+            <button class="btn btn-secondary form-control col-lg-12" onclick="updateCarre()">modifier un carré</button>
             <br>
             <br>
             <button class="btn btn-primary form-control col-lg-12" onclick="Rectangle()">Ajouter un rectangle</button>
-            <button class="btn btn-primary form-control col-lg-12" onclick="deleteRectangle()">Supprimer un rectangle</button>
+            <button class="btn btn-danger form-control col-lg-12" onclick="deleteRectangle()">Supprimer un rectangle</button>
+            <button class="btn btn-secondary form-control col-lg-12" onclick="updateRectangle()">modifier un rectangle</button>
             <br>
             <br>
             <button class="btn btn-primary form-control col-lg-12" onclick="circle()">Ajouter un cercle</button>
-            <button class="btn btn-primary form-control col-lg-12" onclick="deleteCircle()">Supprimer un cercle</button>
+            <button class="btn btn-danger form-control col-lg-12" onclick="deleteCircle()">Supprimer un cercle</button>
+            <button class="btn btn-secondary form-control col-lg-12" onclick="updateCercle()">modifier un cercle</button>
             <br>
             <br>
             <button class="btn btn-primary form-control col-lg-12" onclick="Triangle()">Ajouter un triangle</button>
-            <button class="btn btn-primary form-control col-lg-12" onclick="deleteTriangle()">Supprimer un triangle</button>
-
+            <button class="btn btn-danger form-control col-lg-12" onclick="deleteTriangle()">Supprimer un triangle</button>
+            <button class="btn btn-secondary form-control col-lg-12" onclick="updateTriangle()">modifier un triangle</button>
         </form>
     </div>
 </div>
@@ -37,6 +40,7 @@
     function addCarre() {
         Swal.fire({
             title: "Créer un carré :",
+            icon: "success",
             html: "<form class='form-group' id='form-group'>" +
                 "<input name='size' id='size' type='number' placeholder='merci de rentrer la taille du carré' class='form-control'> <br>" +
                 "<input name='name' id='name' type='text' placeholder='merci de rentrer le nom du carré' class='form-control'> <br>" +
@@ -70,6 +74,7 @@
     function deleteCarre() {
         Swal.fire({
             title: "Supprimer un carré :",
+            icon: "error",
             html: "<form class='form-group' id='form-group'>" +
                 "<input name='id' id='id' type='number' placeholder='merci de rentrer l id du carré a supprimer' class='form-control'> <br>" +
                 "<button onclick='delSq()' class='btn btn-primary'>Submit</button>" +
@@ -97,9 +102,47 @@
                 console.log(err)
             })
     }
+    function updateCarre() {
+        Swal.fire({
+            title: "Modifier un carré :",
+            icon: "info",
+            html: "<form class='form-group' id='form-group'>" +
+                "<input name='id' id='id' type='number' placeholder='merci de rentrer l id du carré a modifier' class='form-control'> <br>" +
+                "<input name='size' id='size' type='number' placeholder='merci de rentrer la nouvelle taille du carré' class='form-control'> <br>" +
+                "<input name='name' id='name' type='text' placeholder='merci de rentrer le nouveau nom du carré' class='form-control'> <br>" +
+                "<button onclick='updateSq()' class='btn btn-primary'>Submit</button>" +
+                "</form>",
+            showConfirmButton: false,
+        })
+    }
+    function updateSq() {
+        const idS = document.getElementById("id").value;
+        const sizeS = document.getElementById("size").value;
+        const nameS = document.getElementById("name").value;
+
+        fetch('http://localhost:8888/Square', {
+            method: 'PUT',
+            headers: {
+                'Content-Type': 'application/json',
+                'Accept': "*/*",
+            },
+            body: JSON.stringify({
+                "id": idS,
+                "name": nameS,
+                "size": sizeS
+            })
+        })
+            .then(response => {
+                console.log(response)
+            })
+            .catch(err => {
+                console.log(err)
+            })
+    }
     function Rectangle() {
         Swal.fire({
             title: "Créer un Rectangle :",
+            icon: "success",
             html: "<form class='form-group' id='form-group'>" +
                 "<input name='longeur' id='longeur' type='number' placeholder='merci de rentrer la longeur du rectangle' class='form-control'> <br>" +
                 "<input name='largeur' id='largeur' type='number' placeholder='merci de rentrer la largeur du rectangle' class='form-control'> <br>" +
@@ -137,6 +180,7 @@
     function deleteRectangle() {
         Swal.fire({
             title: "Supprimer un rectangle :",
+            icon: "error",
             html: "<form class='form-group' id='form-group'>" +
                 "<input name='id' id='id' type='number' placeholder='merci de rentrer l id du rectangle a supprimer' class='form-control'> <br>" +
                 "<button onclick='delRec()' class='btn btn-primary'>Submit</button>" +
@@ -164,9 +208,51 @@
                 console.log(err)
             })
     }
+    function updateRectangle() {
+        Swal.fire({
+            title: "Modifier un rectangle :",
+            icon: "info",
+            html: "<form class='form-group' id='form-group'>" +
+                "<input name='id' id='id' type='number' placeholder='merci de rentrer l id du rectangle a modifier' class='form-control'> <br>" +
+                "<input name='longeur' id='longeur' type='number' placeholder='merci de rentrer la nouvelle longeur du rectangle' class='form-control'> <br>" +
+                "<input name='largeur' id='largeur' type='number' placeholder='merci de rentrer la nouvelle largeur du rectangle' class='form-control'> <br>" +
+                "<input name='name' id='name' type='text' placeholder='merci de rentrer le nouveau nom du rectangle' class='form-control'> <br>" +
+                "<button onclick='updateRec()' class='btn btn-primary'>Submit</button>" +
+                "</form>",
+            showConfirmButton: false,
+        })
+    }
+    function updateRec() {
+        const idR = document.getElementById("id").value;
+        const longeurR = document.getElementById("longeur").value;
+        const largeurR = document.getElementById("largeur").value;
+        const nameR = document.getElementById("name").value;
+
+        fetch('http://localhost:8888/Rectangle', {
+            method: 'PUT',
+            headers: {
+                'Content-Type': 'application/json',
+                'Accept': "*/*",
+            },
+            body: JSON.stringify({
+                "id": idR,
+                "largeur": largeurR,
+                "longeur": longeurR,
+                "name": nameR
+
+            })
+        })
+            .then(response => {
+                console.log(response)
+            })
+            .catch(err => {
+                console.log(err)
+            })
+    }
     function circle() {
         Swal.fire({
             title: "Créer un cercle :",
+            icon: "success",
             html:  "<form class='form-group'>" +
                 "<input name='rayon' id='rayon' type='number' placeholder='merci de rentrer la rayon du cercle' class='form-control'> <br>" +
                 "<input name='name' id='name' type='text' placeholder='merci de rentrer le nom du cercle' class='form-control'> <br>" +
@@ -201,6 +287,7 @@
     function deleteCircle() {
         Swal.fire({
             title: "Supprimer un cercle :",
+            icon: "error",
             html: "<form class='form-group' id='form-group'>" +
                 "<input name='id' id='id' type='number' placeholder='merci de rentrer l id du cercle a supprimer' class='form-control'> <br>" +
                 "<button onclick='delCir()' class='btn btn-primary'>Submit</button>" +
@@ -228,9 +315,47 @@
                 console.log(err)
             })
     }
+    function updateCercle() {
+        Swal.fire({
+            title: "Modifier un cercle :",
+            icon: "info",
+            html: "<form class='form-group' id='form-group'>" +
+                "<input name='id' id='id' type='number' placeholder='merci de rentrer l id du cercle a modifier' class='form-control'> <br>" +
+                "<input name='rayon' id='rayon' type='number' placeholder='merci de rentrer le nouveau rayon du cercle' class='form-control'> <br>" +
+                "<input name='name' id='name' type='text' placeholder='merci de rentrer le nouveau nom du cercle' class='form-control'> <br>" +
+                "<button onclick='updateCir()' class='btn btn-primary'>Submit</button>" +
+                "</form>",
+            showConfirmButton: false,
+        })
+    }
+    function updateCir() {
+        const idC = document.getElementById("id").value;
+        const rayonC = document.getElementById("rayon").value;
+        const nameC = document.getElementById("name").value;
+
+        fetch('http://localhost:8888/Circle', {
+            method: 'PUT',
+            headers: {
+                'Content-Type': 'application/json',
+                'Accept': "*/*",
+            },
+            body: JSON.stringify({
+                "id": idC,
+                "name": nameC,
+                "size": rayonC
+            })
+        })
+            .then(response => {
+                console.log(response)
+            })
+            .catch(err => {
+                console.log(err)
+            })
+    }
     function Triangle() {
         Swal.fire({
             title: "Créer un triangle :",
+            icon: "success",
             html:  "<form class='form-group'>" +
                 "<input name='sizeA' id='sizeA' type='number' placeholder='merci de rentrer la taille du côté A' class='form-control'> <br>" +
                 "<input name='sizeB' id='sizeB' type='number' placeholder='merci de rentrer la taille du côté B' class='form-control'> <br>" +
@@ -270,6 +395,7 @@
     function deleteTriangle() {
         Swal.fire({
             title: "Supprimer un triangle :",
+            icon: "error",
             html: "<form class='form-group' id='form-group'>" +
                 "<input name='id' id='id' type='number' placeholder='merci de rentrer l id du triangle a supprimer' class='form-control'> <br>" +
                 "<button onclick='delTri()' class='btn btn-primary'>Submit</button>" +
@@ -288,6 +414,50 @@
             },
             body: JSON.stringify({
                 "id": idT
+            })
+        })
+            .then(response => {
+                console.log(response)
+            })
+            .catch(err => {
+                console.log(err)
+            })
+    }
+    function updateTriangle() {
+        Swal.fire({
+            title: "Modifier un Triangle :",
+            icon: "info",
+            html: "<form class='form-group' id='form-group'>" +
+                "<input name='id' id='id' type='number' placeholder='merci de rentrer l id du Triangle a modifier' class='form-control'> <br>" +
+                "<input name='sizeA' id='sizeA' type='number' placeholder='merci de rentrer la nouvelle taille du côté A' class='form-control'> <br>" +
+                "<input name='sizeB' id='sizeB' type='number' placeholder='merci de rentrer la nouvelle taille du côté B' class='form-control'> <br>" +
+                "<input name='sizeC' id='sizeC' type='number' placeholder='merci de rentrer la nouvelle taille du côté C' class='form-control'> <br>" +
+                "<input name='name' id='name' type='text' placeholder='merci de rentrer le nouveau nom du Triangle' class='form-control'> <br>" +
+                "<button onclick='updateTri()' class='btn btn-primary'>Submit</button>" +
+                "</form>",
+            showConfirmButton: false,
+        })
+    }
+    function updateTri() {
+        const idT = document.getElementById("id").value;
+        const sizeA = document.getElementById('sizeA').value;
+        const sizeB = document.getElementById('sizeB').value;
+        const sizeC = document.getElementById('sizeC').value;
+        const nameT = document.getElementById('name').value;
+
+        fetch('http://localhost:8888/Triangle', {
+            method: 'PUT',
+            headers: {
+                'Content-Type': 'application/json',
+                'Accept': "*/*",
+            },
+            body: JSON.stringify({
+                "id": idT,
+                "name": nameT,
+                "sizeA": sizeA,
+                "sizeB": sizeB,
+                "sizeC": sizeC
+
             })
         })
             .then(response => {

@@ -52,7 +52,7 @@ public class SquareController {
     }
 
     @ApiOperation(value = "Supprime un carré éxistants dans la BDD en fonction de son ID")
-    @DeleteMapping (value = "/Square/{id}")
+    @DeleteMapping (value = "/Square/?id={id}")
     public void supprimerUnSquare(@PathVariable int id) {
 
        squareDao.deleteById(id);

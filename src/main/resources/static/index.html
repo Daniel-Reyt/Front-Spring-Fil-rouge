@@ -13,26 +13,28 @@
     <br>
     <div class="col-lg-12">
         <form action="#" class="form-group" style="padding: 30px; border-width: 2px; border-color: #000000; border-style: solid; border-radius: 30px">
-            <button class="btn btn-primary form-control col-lg-12" onclick="Carre()">Carré</button>
+            <button class="btn btn-primary form-control col-lg-12" onclick="addCarre()">Ajouter un carré</button>
+            <button class="btn btn-primary form-control col-lg-12" onclick="deleteCarre()">Supprimer un carré</button>
             <br>
             <br>
-            <button class="btn btn-primary form-control col-lg-12" onclick="Rectangle()">Rectangle</button>
+            <button class="btn btn-primary form-control col-lg-12" onclick="Rectangle()">Ajouter un rectangle</button>
+            <button class="btn btn-primary form-control col-lg-12" onclick="deleteRectangle()">Supprimer un rectangle</button>
             <br>
             <br>
-            <button class="btn btn-primary form-control col-lg-12" onclick="circle()">Cercle</button>
+            <button class="btn btn-primary form-control col-lg-12" onclick="circle()">Ajouter un cercle</button>
+            <button class="btn btn-primary form-control col-lg-12" onclick="deleteCircle()">Supprimer un cercle</button>
             <br>
             <br>
-            <button class="btn btn-primary form-control col-lg-12" onclick="Triangle()">Triangle</button>
+            <button class="btn btn-primary form-control col-lg-12" onclick="Triangle()">Ajouter un triangle</button>
+            <button class="btn btn-primary form-control col-lg-12" onclick="deleteTriangle()">Supprimer un triangle</button>
+
         </form>
-    </div>
-    <div class=" col-lg-12">
-        <canvas id="canvas" class="col-lg-12" style="border-color: black; border-style:  solid; border-width: 1px;"></canvas>
     </div>
 </div>
 
 </body>
 <script type="text/javascript">
-    function Carre() {
+    function addCarre() {
         Swal.fire({
             title: "Créer un carré :",
             html: "<form class='form-group' id='form-group'>" +
@@ -56,6 +58,36 @@
             body: JSON.stringify({
                 "name": nameS,
                 "size": sizeS
+            })
+        })
+            .then(response => {
+                console.log(response)
+            })
+            .catch(err => {
+                console.log(err)
+            })
+    }
+    function deleteCarre() {
+        Swal.fire({
+            title: "Supprimer un carré :",
+            html: "<form class='form-group' id='form-group'>" +
+                "<input name='id' id='id' type='number' placeholder='merci de rentrer l id du carré a supprimer' class='form-control'> <br>" +
+                "<button onclick='delSq()' class='btn btn-primary'>Submit</button>" +
+                "</form>",
+            showConfirmButton: false,
+        })
+    }
+    function delSq() {
+        const idS = document.getElementById("id").value;
+
+        fetch('http://localhost:8888/Square', {
+            method: 'DELETE',
+            headers: {
+                'Content-Type': 'application/json',
+                'Accept': "*/*",
+            },
+            body: JSON.stringify({
+                "id": idS
             })
         })
             .then(response => {
@@ -102,6 +134,36 @@
                 console.log(err)
             })
     }
+    function deleteRectangle() {
+        Swal.fire({
+            title: "Supprimer un rectangle :",
+            html: "<form class='form-group' id='form-group'>" +
+                "<input name='id' id='id' type='number' placeholder='merci de rentrer l id du rectangle a supprimer' class='form-control'> <br>" +
+                "<button onclick='delRec()' class='btn btn-primary'>Submit</button>" +
+                "</form>",
+            showConfirmButton: false,
+        })
+    }
+    function delRec() {
+        const idR = document.getElementById("id").value;
+
+        fetch('http://localhost:8888/Rectangle', {
+            method: 'DELETE',
+            headers: {
+                'Content-Type': 'application/json',
+                'Accept': "*/*",
+            },
+            body: JSON.stringify({
+                "id": idR
+            })
+        })
+            .then(response => {
+                console.log(response)
+            })
+            .catch(err => {
+                console.log(err)
+            })
+    }
     function circle() {
         Swal.fire({
             title: "Créer un cercle :",
@@ -135,6 +197,36 @@
         .catch(err => {
             console.log(err)
         })
+    }
+    function deleteCircle() {
+        Swal.fire({
+            title: "Supprimer un cercle :",
+            html: "<form class='form-group' id='form-group'>" +
+                "<input name='id' id='id' type='number' placeholder='merci de rentrer l id du cercle a supprimer' class='form-control'> <br>" +
+                "<button onclick='delCir()' class='btn btn-primary'>Submit</button>" +
+                "</form>",
+            showConfirmButton: false,
+        })
+    }
+    function delCir() {
+        const idC = document.getElementById("id").value;
+
+        fetch('http://localhost:8888/Circle', {
+            method: 'DELETE',
+            headers: {
+                'Content-Type': 'application/json',
+                'Accept': "*/*",
+            },
+            body: JSON.stringify({
+                "id": idC
+            })
+        })
+            .then(response => {
+                console.log(response)
+            })
+            .catch(err => {
+                console.log(err)
+            })
     }
     function Triangle() {
         Swal.fire({
@@ -175,59 +267,35 @@
                 console.log(err)
             })
     }
-
-    window.addEventListener('load', ()=>{
-
-        resize();
-        document.addEventListener('mousedown', startPainting);
-        document.addEventListener('mouseup', stopPainting);
-        document.addEventListener('mousemove', sketch);
-        window.addEventListener('resize', resize);
-    });
-
-    const canvas = document.querySelector('#canvas');
-
-    const ctx = canvas.getContext('2d');
-
-    function resize(){
-        ctx.canvas.width = window.innerWidth;
-        ctx.canvas.height = window.innerHeight;
+    function deleteTriangle() {
+        Swal.fire({
+            title: "Supprimer un triangle :",
+            html: "<form class='form-group' id='form-group'>" +
+                "<input name='id' id='id' type='number' placeholder='merci de rentrer l id du triangle a supprimer' class='form-control'> <br>" +
+                "<button onclick='delTri()' class='btn btn-primary'>Submit</button>" +
+                "</form>",
+            showConfirmButton: false,
+        })
     }
+    function delTri() {
+        const idT = document.getElementById("id").value;
 
-    let coord = {x:0 , y:0};
-
-    let paint = false;
-
-    function getPosition(event){
-        coord.x = event.clientX - canvas.offsetLeft;
-        coord.y = event.clientY - canvas.offsetTop;
-    }
-
-    function startPainting(event){
-        paint = true;
-        getPosition(event);
-    }
-    function stopPainting(){
-        paint = false;
-    }
-
-    function sketch(event){
-        if (!paint) return;
-        ctx.beginPath();
-
-        ctx.lineWidth = 5;
-
-        ctx.lineCap = 'round';
-
-        ctx.strokeStyle = 'green';
-
-        ctx.moveTo(coord.x, coord.y);
-
-        getPosition(event);
-
-        ctx.lineTo(coord.x , coord.y);
-
-        ctx.stroke();
+        fetch('http://localhost:8888/Triangle', {
+            method: 'DELETE',
+            headers: {
+                'Content-Type': 'application/json',
+                'Accept': "*/*",
+            },
+            body: JSON.stringify({
+                "id": idT
+            })
+        })
+            .then(response => {
+                console.log(response)
+            })
+            .catch(err => {
+                console.log(err)
+            })
     }
 </script>
 <script src="https://cdn.jsdelivr.net/npm/sweetalert2@10"></script>

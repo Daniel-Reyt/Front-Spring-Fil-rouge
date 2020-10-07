@@ -57,9 +57,9 @@ public class RectangleController {
     }
 
     @ApiOperation(value = "Supprime un rectangle éxistants dans la BDD en fonction de son ID")
-    @DeleteMapping (value = "/Rectangle/{id}")
-    public void supprimerUnSquare(@PathVariable int id) {
-
+    @DeleteMapping (value = "/Rectangle")
+    public void supprimerUnSquare(@RequestBody Rectangle rectangle) {
+        int id = rectangle.getId();
         rectangleDao.deleteById(id);
     }
 

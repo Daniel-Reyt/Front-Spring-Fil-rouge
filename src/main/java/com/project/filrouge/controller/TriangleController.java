@@ -59,9 +59,9 @@ public class TriangleController {
     }
 
     @ApiOperation(value = "Supprime un triangle éxistants dans la BDD en fonction de son ID")
-    @DeleteMapping (value = "/Triangle/{id}")
-    public void supprimerUnSquare(@PathVariable int id) {
-
+    @DeleteMapping (value = "/Triangle")
+    public void supprimerUnSquare(@RequestBody Triangle triangle) {
+        int id = triangle.getId();
         triangleDao.deleteById(id);
     }
 

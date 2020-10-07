@@ -8,6 +8,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 import org.springframework.web.servlet.support.ServletUriComponentsBuilder;
+import springfox.documentation.spring.web.json.Json;
 
 import java.net.URI;
 import java.util.List;
@@ -52,9 +53,9 @@ public class SquareController {
     }
 
     @ApiOperation(value = "Supprime un carré éxistants dans la BDD en fonction de son ID")
-    @DeleteMapping (value = "/Square/?id={id}")
-    public void supprimerUnSquare(@PathVariable int id) {
-
+    @DeleteMapping (value = "/Square")
+    public void supprimerUnSquare(@RequestBody Square square) {
+        int id = square.getId();
        squareDao.deleteById(id);
     }
 

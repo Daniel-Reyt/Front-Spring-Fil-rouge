@@ -54,9 +54,9 @@ public class CircleController {
     }
 
     @ApiOperation(value = "Supprime un cercle éxistants dans la BDD en fonction de son ID")
-    @DeleteMapping (value = "/Circle/{id}")
-    public void supprimerUnSquare(@PathVariable int id) {
-
+    @DeleteMapping (value = "/Circle")
+    public void supprimerUnSquare(@RequestBody Circle circle) {
+        int id = circle.getId();
         circleDao.deleteById(id);
     }
 

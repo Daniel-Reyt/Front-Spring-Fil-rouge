@@ -1,6 +1,5 @@
 package com.project.filrouge;
 
-import com.project.filrouge.models.*;
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
 import springfox.documentation.swagger2.annotations.EnableSwagger2;
@@ -11,7 +10,7 @@ public class FilRougeApplication {
 
 	public static void main(String[] args) {
 		SpringApplication.run(FilRougeApplication.class, args);
-		System.out.println("projet démarrer");
+		System.out.println("projet démarré");
 	}
 
 }

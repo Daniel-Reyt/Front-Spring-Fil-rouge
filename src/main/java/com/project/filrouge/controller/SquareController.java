@@ -41,8 +41,7 @@ public class SquareController {
     @PostMapping(value = "/Square")
     public ResponseEntity<Void> ajouterProduit(@RequestBody Square square) {
         Square productAdded =  squareDao.save(square);
-        if (productAdded == null)
-            return ResponseEntity.noContent().build();
+        if (productAdded == null) return ResponseEntity.noContent().build();
 
         URI location = ServletUriComponentsBuilder
                 .fromCurrentRequest()

@@ -1,11 +1,11 @@
 package com.project.filrouge.Controller;
 
 import com.project.filrouge.Dao.ShapeDao;
-import com.project.filrouge.Form.Rectangle;
-import com.project.filrouge.Form.Shape;
-import com.project.filrouge.Form.Square;
+import com.project.filrouge.Form.*;
+import com.project.filrouge.Job.CircleJob;
 import com.project.filrouge.Job.RectangleJob;
 import com.project.filrouge.Job.SquareJob;
+import com.project.filrouge.Job.TriangleJob;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
 
@@ -35,5 +35,19 @@ public class ShapeController {
     @PostMapping(value = "/rectangle")
     public Shape createRectangle(@RequestBody RectangleJob rectangle){
         return shapeDao.save(new Rectangle(rectangle));
+    }
+    @PostMapping(value = "/circle")
+    public Shape createCircle(@RequestBody CircleJob circle){
+        return shapeDao.save(new Circle(circle));
+    }
+    @PostMapping(value = "/triangle")
+    public Shape createTriangle(@RequestBody TriangleJob triangle){
+        return shapeDao.save(new Triangle(triangle));
+    }
+
+    @DeleteMapping(value = "/shapes/{id}")
+    public List<Shape> deleteById(@PathVariable int id) {
+        shapeDao.deleteById(id);
+        return shapeDao.findAll();
     }
 }

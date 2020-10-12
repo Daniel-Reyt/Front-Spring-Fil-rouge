@@ -1,4 +1,4 @@
-package com.project.filrouge.configuration;
+package com.project.filrouge.swaggerConfiguration;
 
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;

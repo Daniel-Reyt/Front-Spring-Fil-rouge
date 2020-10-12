@@ -16,7 +16,7 @@ public class Circle extends Shape {
 
     public Circle(CircleJob job) {
         this.rayon = job.getRayon();
-        this.diameter = job.getDiameter();
+        this.diameter = getDiameter();
         this.name = job.getName();
         this.perimeter = getPerimeter();
         this.aire = getAire();
@@ -31,7 +31,7 @@ public class Circle extends Shape {
     }
 
     public int getDiameter() {
-        return diameter;
+        return rayon * 2;
     }
 
     public void setDiameter(int diameter) {

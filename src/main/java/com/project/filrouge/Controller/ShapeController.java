@@ -20,6 +20,8 @@ public class ShapeController {
     @Autowired
     ShapeDao shapeDao;
 
+    List<Shape> composition;
+
     @ApiOperation(value = "Récupère tout les formes éxistants dans la BDD")
     @GetMapping(value = "/shapes")
     public List<Shape> getShapes(){

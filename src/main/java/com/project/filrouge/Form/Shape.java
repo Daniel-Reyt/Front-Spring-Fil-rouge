@@ -1,6 +1,7 @@
 package com.project.filrouge.Form;
 
 import javax.persistence.*;
+import java.util.List;
 
 @Entity
 public abstract class Shape {
@@ -11,6 +12,10 @@ public abstract class Shape {
 
     String name;
     int faces;
+
+    @ManyToMany
+    @JoinColumn(name="dessins_id")
+    private List<Dessins> dessins;
 
     public Integer getId() {
         return id;

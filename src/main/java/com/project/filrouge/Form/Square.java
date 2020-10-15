@@ -9,6 +9,7 @@ public class Square extends Shape {
     public int size;
     public double perimeter;
     public double aire;
+    int dessin;
 
     public Square(){}
 
@@ -16,8 +17,9 @@ public class Square extends Shape {
         this.name = job.getName();
         this.faces = 4;
         this.size = job.getSize();
-        this.perimeter = getPerimeter();
-        this.aire = getAire();
+        this.perimeter = job.setPerimeter();
+        this.aire = job.setAire();
+        this.dessin = job.getId_dessin();
     }
 
     public int getSize() {

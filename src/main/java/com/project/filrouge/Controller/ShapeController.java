@@ -9,6 +9,8 @@ import com.project.filrouge.Job.TriangleJob;
 import io.swagger.annotations.Api;
 import io.swagger.annotations.ApiOperation;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.data.jpa.repository.JpaRepository;
+import org.springframework.data.jpa.repository.Query;
 import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
@@ -30,8 +32,14 @@ public class ShapeController {
 
     @ApiOperation(value = "Récupère tout une forme éxistant en fonction de son id")
     @GetMapping(value = "/shape/{id}")
-    public Shape getShape(@PathVariable int id){
+    public Shape getShapeById(@PathVariable int id){
         return shapeDao.findById(id).orElse(null);
+    }
+
+    @ApiOperation(value = "Récupère tout une forme éxistant en fonction de son id")
+    @GetMapping(value = "/shape/id_dessin/{dessin}")
+    public List<Shape> getShapeByDessin(@PathVariable int dessin){
+        return shapeDao.findByDessin(dessin);
     }
 
     @ApiOperation(value = "Ajoute un carré dans la BDD")

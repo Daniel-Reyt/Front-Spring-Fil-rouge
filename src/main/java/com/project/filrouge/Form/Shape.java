@@ -13,9 +13,7 @@ public abstract class Shape {
     String name;
     int faces;
 
-    @ManyToMany
-    @JoinColumn(name="dessins_id")
-    private List<Dessins> dessins;
+    int dessin;
 
     public Integer getId() {
         return id;
@@ -43,4 +41,11 @@ public abstract class Shape {
     public abstract double getPerimeter();
     public abstract double getAire();
 
+    public int getDessin() {
+        return dessin;
+    }
+
+    public void setDessin(int dessin) {
+        this.dessin = dessin;
+    }
 }

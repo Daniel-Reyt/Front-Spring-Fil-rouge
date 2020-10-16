@@ -1,39 +1,49 @@
 package com.project.filrouge.Job;
 
 public class SquareJob {
-    String name;
-    int size;
+    int width;
     int Dessin;
     double aire;
     double perimeter;
+    int posX;
+    int posY;
 
     public double setAire() {
-        this.aire = getSize() * getSize();
+        this.aire = getwidth() * getwidth();
         return this.aire;
     }
 
     public double setPerimeter() {
-        this.perimeter = getSize() * 4;
+        this.perimeter = getwidth() * 4;
         return this.perimeter;
     }
 
-    public int getSize() {
-        return size;
+    public int getwidth() {
+        return width;
     }
 
-    public void setSize(int size) {
-        this.size = size;
+    public void setwidth(int width) {
+        this.width = width;
     }
 
-    public String getName() {
-        return name;
-    }
-
-    public void setName(String name) {
-        this.name = name;
-    }
 
     public int getId_dessin() {
         return Dessin;
+    }
+
+    public int getPosX() {
+        return posX;
+    }
+
+    public void setPosX(int posX) {
+        this.posX = posX;
+    }
+
+    public int getPosY() {
+        return posY;
+    }
+
+    public void setPosY(int posY) {
+        this.posY = posY;
     }
 }

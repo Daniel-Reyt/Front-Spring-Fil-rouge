@@ -10,10 +10,10 @@ public abstract class Shape {
     @Column(nullable = false)
     Integer id;
 
-    String name;
-    int faces;
-
     int dessin;
+
+    int posX;
+    int posY;
 
     public Integer getId() {
         return id;
@@ -23,21 +23,6 @@ public abstract class Shape {
         this.id = id;
     }
 
-    public String getName() {
-        return name;
-    }
-
-    public void setName(String name) {
-        this.name = name;
-    }
-
-    public int getFaces() {
-        return faces;
-    }
-
-    public void setFaces(int faces) {
-        this.faces = faces;
-    }
     public abstract double getPerimeter();
     public abstract double getAire();
 
@@ -47,5 +32,21 @@ public abstract class Shape {
 
     public void setDessin(int dessin) {
         this.dessin = dessin;
+    }
+
+    public int getPosX() {
+        return posX;
+    }
+
+    public void setPosX(int posX) {
+        this.posX = posX;
+    }
+
+    public int getPosY() {
+        return posY;
+    }
+
+    public void setPosY(int posY) {
+        this.posY = posY;
     }
 }

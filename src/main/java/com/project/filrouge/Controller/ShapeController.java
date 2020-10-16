@@ -8,21 +8,31 @@ import com.project.filrouge.Job.SquareJob;
 import com.project.filrouge.Job.TriangleJob;
 import io.swagger.annotations.Api;
 import io.swagger.annotations.ApiOperation;
+import io.swagger.models.Model;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.data.jpa.repository.Query;
 import org.springframework.web.bind.annotation.*;
+import org.springframework.web.servlet.ModelAndView;
 
 import java.util.List;
 
 @Api(description = "gestion de tout les formes éxistants")
 @RestController
+@CrossOrigin(origins = "*", allowedHeaders = "*")
 public class ShapeController {
 
     @Autowired
     ShapeDao shapeDao;
 
     List<Shape> composition;
+
+    @GetMapping(value = "/canvas")
+    public ModelAndView getCanvas(){
+        ModelAndView modelAndView = new ModelAndView();
+        modelAndView.setViewName("canvas");
+        return modelAndView;
+    }
 
     @ApiOperation(value = "Récupère tout les formes éxistants dans la BDD")
     @GetMapping(value = "/shapes")

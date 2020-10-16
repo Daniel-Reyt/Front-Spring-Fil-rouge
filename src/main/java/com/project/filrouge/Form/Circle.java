@@ -2,7 +2,7 @@ package com.project.filrouge.Form;
 
 import com.project.filrouge.Job.CircleJob;
 
-import javax.persistence.Entity;
+import javax.persistence.*;
 
 @Entity
 public class Circle extends Shape {
@@ -17,7 +17,6 @@ public class Circle extends Shape {
     public Circle(CircleJob job) {
         this.rayon = job.getRayon();
         this.diameter = getDiameter();
-        this.name = job.getName();
         this.perimeter = getPerimeter();
         this.aire = getAire();
     }

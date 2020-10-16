@@ -2,10 +2,11 @@ package com.project.filrouge.Form;
 
 import com.project.filrouge.Job.TriangleJob;
 
-import javax.persistence.Entity;
+import javax.persistence.*;
 
 @Entity
 public class Triangle extends Shape {
+
     //TODO all calc aire and pertimeter for triangle rectangle
     public int sizeA;
     public int sizeB;
@@ -20,8 +21,6 @@ public class Triangle extends Shape {
         this.sizeA = job.getSizeA();
         this.sizeB = job.getSizeB();
         this.sizeC = job.getSizeC();
-        this.name = job.getName();
-        this.faces = 3;
         this.perimeter = getPerimeter();
         this.aire = getAire();
     }

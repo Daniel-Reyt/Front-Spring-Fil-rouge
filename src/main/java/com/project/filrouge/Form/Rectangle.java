@@ -2,7 +2,7 @@ package com.project.filrouge.Form;
 
 import com.project.filrouge.Job.RectangleJob;
 
-import javax.persistence.Entity;
+import javax.persistence.*;
 
 @Entity
 public class Rectangle extends Shape{
@@ -17,8 +17,6 @@ public class Rectangle extends Shape{
     public Rectangle(RectangleJob job){
         this.length = job.getLength();
         this.width = job.getWidth();
-        this.name = job.getName();
-        this.faces = 4;
         this.perimeter = getPerimeter();
         this.aire = getAire();
     }

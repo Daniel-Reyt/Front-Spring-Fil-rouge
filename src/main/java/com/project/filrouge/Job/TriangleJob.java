@@ -1,18 +1,9 @@
 package com.project.filrouge.Job;
 
 public class TriangleJob {
-    String name;
     int sizeA;
     int sizeB;
     int sizeC;
-
-    public String getName() {
-        return name;
-    }
-
-    public void setName(String name) {
-        this.name = name;
-    }
 
     public int getSizeA() {
         return sizeA;

@@ -2,39 +2,37 @@ package com.project.filrouge.Form;
 
 import com.project.filrouge.Job.SquareJob;
 
-import javax.persistence.Entity;
+import javax.persistence.*;
 
 @Entity
 public class Square extends Shape {
-    public int size;
-    public double perimeter;
-    public double aire;
+    public int width;
 
     public Square(){}
 
     public Square(SquareJob job){
-        this.name = job.getName();
-        this.faces = 4;
-        this.size = job.getSize();
-        this.perimeter = getPerimeter();
-        this.aire = getAire();
+        this.width = job.getwidth();
+        this.posX = job.getPosX();
+        this.posY = job.getPosY();
+        this.color = job.getColor();
+        this.shapeType = job.getShapeType();
     }
 
-    public int getSize() {
-        return size;
+    public int getWidth() {
+        return width;
     }
 
-    public void setSize(int size) {
-        this.size = size;
+    public void setWidth(int size) {
+        this.width = size;
     }
 
     @Override
     public double getPerimeter() {
-        return getSize() * 4;
+        return getWidth() * 4;
     }
 
     @Override
     public double getAire() {
-        return getSize() * getSize();
+        return getWidth() * getWidth();
     }
 }

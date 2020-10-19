@@ -1,18 +1,11 @@
 package com.project.filrouge.Job;
 
 public class TriangleJob {
-    String name;
     int sizeA;
     int sizeB;
     int sizeC;
-
-    public String getName() {
-        return name;
-    }
-
-    public void setName(String name) {
-        this.name = name;
-    }
+    String color;
+    String shapeType;
 
     public int getSizeA() {
         return sizeA;
@@ -36,5 +29,21 @@ public class TriangleJob {
 
     public void setSizeC(int sizeC) {
         this.sizeC = sizeC;
+    }
+
+    public String getColor() {
+        return color;
+    }
+
+    public void setColor(String color) {
+        this.color = color;
+    }
+
+    public String getShapeType() {
+        return shapeType;
+    }
+
+    public void setShapeType(String shapeType) {
+        this.shapeType = shapeType;
     }
 }

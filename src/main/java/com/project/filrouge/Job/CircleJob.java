@@ -1,17 +1,14 @@
 package com.project.filrouge.Job;
 
 public class CircleJob {
-    String name;
     int rayon;
     int diameter;
 
-    public String getName() {
-        return name;
-    }
+    int posX;
+    int posY;
 
-    public void setName(String name) {
-        this.name = name;
-    }
+    String color;
+    String shapeType;
 
     public int getRayon() {
         return rayon;
@@ -28,4 +25,37 @@ public class CircleJob {
     public void setDiameter(int diameter) {
         this.diameter = diameter;
     }
+
+    public int getPosX() {
+        return posX;
+    }
+
+    public void setPosX(int posX) {
+        this.posX = posX;
+    }
+
+    public int getPosY() {
+        return posY;
+    }
+
+    public void setPosY(int posY) {
+        this.posY = posY;
+    }
+
+    public String getColor() {
+        return color;
+    }
+
+    public void setColor(String color) {
+        this.color = color;
+    }
+
+    public String getShapeType() {
+        return shapeType;
+    }
+
+    public void setShapeType(String shapeType) {
+        this.shapeType = shapeType;
+    }
+
 }

@@ -1,0 +1,16 @@
+{
+    "color": "blue",
+    "width": 10,
+    "posX": 100,
+    "posY": 100,
+    "shapeType": "square"
+}
+{
+    "length" : 145,
+    "width": 10,
+    "posX": 0,
+    "posy": 0,
+    "color": "grey",
+    "dessin": 1,
+    "shapeType": "rectangle"
+}

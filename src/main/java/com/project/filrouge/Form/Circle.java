@@ -2,24 +2,23 @@ package com.project.filrouge.Form;
 
 import com.project.filrouge.Job.CircleJob;
 
-import javax.persistence.Entity;
+import javax.persistence.*;
 
 @Entity
 public class Circle extends Shape {
     public int rayon;
     public int diameter;
-    public double perimeter;
-    public double aire;
 
     public Circle() {
     }
 
     public Circle(CircleJob job) {
         this.rayon = job.getRayon();
-        this.diameter = job.getDiameter();
-        this.name = job.getName();
-        this.perimeter = getPerimeter();
-        this.aire = getAire();
+        this.diameter = getDiameter();
+        this.posX = job.getPosX();
+        this.posY = job.getPosY();
+        this.color = job.getColor();
+        this.shapeType = job.getShapeType();
     }
 
     public int getRayon() {
@@ -31,7 +30,7 @@ public class Circle extends Shape {
     }
 
     public int getDiameter() {
-        return diameter;
+        return rayon * 2;
     }
 
     public void setDiameter(int diameter) {

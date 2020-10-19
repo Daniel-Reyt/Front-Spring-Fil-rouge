@@ -8,5 +8,4 @@ import java.util.List;
 
 @Repository
 public interface ShapeDao extends JpaRepository<Shape, Integer> {
-    List<Shape> findByDessin(int dessin);
 }

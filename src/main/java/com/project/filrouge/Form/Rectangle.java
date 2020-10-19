@@ -8,8 +8,6 @@ import javax.persistence.*;
 public class Rectangle extends Shape{
     public int length;
     public int width;
-    public double perimeter;
-    public double aire;
 
     public Rectangle() {
     }
@@ -17,8 +15,10 @@ public class Rectangle extends Shape{
     public Rectangle(RectangleJob job){
         this.length = job.getLength();
         this.width = job.getWidth();
-        this.perimeter = getPerimeter();
-        this.aire = getAire();
+        this.posX = job.getPosX();
+        this.posY = job.getPosY();
+        this.color = job.getColor();
+        this.shapeType = job.getShapeType();
     }
 
     public int getLength() {

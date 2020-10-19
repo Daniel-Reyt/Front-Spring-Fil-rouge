@@ -3,12 +3,35 @@
 <head>
     <title>Canvas with shape</title>
     <meta charset="UTF-8">
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
+    <script src="https://cdn.jsdelivr.net/npm/sweetalert2@10"></script>
 </head>
 <body>
+<div class="container">
     <button id="getButton" onclick="getAllShape()">take all shapes</button>
-    <canvas id="canvas" style="width: 1000px">
+    <canvas id="canvas" style="border-width: 2px; border-color: #000000; border-style: solid; border-radius: 30px; width: 100%; overflow: scroll">
 
     </canvas>
-    <script src="index.js"></script>
+        <div class="col-lg-12" style="text-align: center; border-width: 2px; border-color: black; border-style: solid; border-radius: 30px">
+            <h1>Ajout de formes :</h1>
+        </div>
+        <br>
+        <div class="col-lg-12">
+            <form action="#" class="form-group" style="padding: 30px; border-width: 2px; border-color: #000000; border-style: solid; border-radius: 30px">
+                <button class="btn btn-primary form-control col-lg-12" onclick="addCarre()">Ajouter un carré</button>
+                <br>
+                <br>
+                <button class="btn btn-primary form-control col-lg-12" onclick="Rectangle()">Ajouter un rectangle</button>
+                <!--            <br>-->
+                <!--            <br>-->
+                <!--            <button class="btn btn-primary form-control col-lg-12" onclick="circle()">Ajouter un cercle</button>-->
+                <!--            <br>-->
+                <!--            <br>-->
+                <!--            <button class="btn btn-primary form-control col-lg-12" onclick="Triangle()">Ajouter un triangle</button>-->
+            </form>
+        </div>
+    </div>
+    <script src="canvas.js"></script>
+    <script src="post.js"></script>
 </body>
 </html>

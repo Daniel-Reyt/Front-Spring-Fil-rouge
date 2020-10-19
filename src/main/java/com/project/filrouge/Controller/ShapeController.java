@@ -15,6 +15,7 @@ import org.springframework.data.jpa.repository.Query;
 import org.springframework.web.bind.annotation.*;
 import org.springframework.web.servlet.ModelAndView;
 
+import java.util.ArrayList;
 import java.util.List;
 
 @Api(description = "gestion de tout les formes éxistants")
@@ -44,12 +45,6 @@ public class ShapeController {
     @GetMapping(value = "/shape/{id}")
     public Shape getShapeById(@PathVariable int id){
         return shapeDao.findById(id).orElse(null);
-    }
-
-    @ApiOperation(value = "Récupère tout une forme éxistant en fonction de son id")
-    @GetMapping(value = "/shape/id_dessin/{dessin}")
-    public List<Shape> getShapeByDessin(@PathVariable int dessin){
-        return shapeDao.findByDessin(dessin);
     }
 
     @ApiOperation(value = "Ajoute un carré dans la BDD")

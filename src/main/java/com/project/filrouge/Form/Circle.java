@@ -8,8 +8,6 @@ import javax.persistence.*;
 public class Circle extends Shape {
     public int rayon;
     public int diameter;
-    public double perimeter;
-    public double aire;
 
     public Circle() {
     }
@@ -17,8 +15,10 @@ public class Circle extends Shape {
     public Circle(CircleJob job) {
         this.rayon = job.getRayon();
         this.diameter = getDiameter();
-        this.perimeter = getPerimeter();
-        this.aire = getAire();
+        this.posX = job.getPosX();
+        this.posY = job.getPosY();
+        this.color = job.getColor();
+        this.shapeType = job.getShapeType();
     }
 
     public int getRayon() {

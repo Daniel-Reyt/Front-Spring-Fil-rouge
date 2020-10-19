@@ -11,8 +11,6 @@ public class Triangle extends Shape {
     public int sizeA;
     public int sizeB;
     public int sizeC;
-    public double perimeter;
-    public double aire;
 
     public Triangle() {
     }
@@ -21,8 +19,8 @@ public class Triangle extends Shape {
         this.sizeA = job.getSizeA();
         this.sizeB = job.getSizeB();
         this.sizeC = job.getSizeC();
-        this.perimeter = getPerimeter();
-        this.aire = getAire();
+        this.color = job.getColor();
+        this.shapeType = job.getShapeType();
     }
 
     @Override

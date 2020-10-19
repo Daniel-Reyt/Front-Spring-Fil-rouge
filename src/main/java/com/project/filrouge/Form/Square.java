@@ -9,19 +9,15 @@ import javax.persistence.InheritanceType;
 @Entity
 public class Square extends Shape {
     public int width;
-    public double perimeter;
-    public double aire;
-    int dessin;
 
     public Square(){}
 
     public Square(SquareJob job){
         this.width = job.getwidth();
-        this.perimeter = job.setPerimeter();
-        this.aire = job.setAire();
-        this.dessin = job.getId_dessin();
         this.posX = job.getPosX();
         this.posY = job.getPosY();
+        this.color = job.getColor();
+        this.shapeType = job.getShapeType();
     }
 
     public int getWidth() {

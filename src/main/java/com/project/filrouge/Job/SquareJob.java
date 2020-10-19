@@ -2,21 +2,10 @@ package com.project.filrouge.Job;
 
 public class SquareJob {
     int width;
-    int Dessin;
-    double aire;
-    double perimeter;
     int posX;
     int posY;
-
-    public double setAire() {
-        this.aire = getwidth() * getwidth();
-        return this.aire;
-    }
-
-    public double setPerimeter() {
-        this.perimeter = getwidth() * 4;
-        return this.perimeter;
-    }
+    String color;
+    String shapeType;
 
     public int getwidth() {
         return width;
@@ -24,11 +13,6 @@ public class SquareJob {
 
     public void setwidth(int width) {
         this.width = width;
-    }
-
-
-    public int getId_dessin() {
-        return Dessin;
     }
 
     public int getPosX() {
@@ -45,5 +29,21 @@ public class SquareJob {
 
     public void setPosY(int posY) {
         this.posY = posY;
+    }
+
+    public String getColor() {
+        return color;
+    }
+
+    public void setColor(String color) {
+        this.color = color;
+    }
+
+    public String getShapeType() {
+        return shapeType;
+    }
+
+    public void setShapeType(String shapeType) {
+        this.shapeType = shapeType;
     }
 }

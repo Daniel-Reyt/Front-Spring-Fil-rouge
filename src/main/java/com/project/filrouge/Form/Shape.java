@@ -9,9 +9,9 @@ public abstract class Shape {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     @Column(nullable = false)
     Integer id;
-
-    int dessin;
-
+    String color;
+    @Column(nullable = false)
+    String shapeType;
     int posX;
     int posY;
 
@@ -25,14 +25,6 @@ public abstract class Shape {
 
     public abstract double getPerimeter();
     public abstract double getAire();
-
-    public int getDessin() {
-        return dessin;
-    }
-
-    public void setDessin(int dessin) {
-        this.dessin = dessin;
-    }
 
     public int getPosX() {
         return posX;
@@ -48,5 +40,21 @@ public abstract class Shape {
 
     public void setPosY(int posY) {
         this.posY = posY;
+    }
+
+    public String getColor() {
+        return color;
+    }
+
+    public void setColor(String color) {
+        this.color = color;
+    }
+
+    public String getShapeType() {
+        return shapeType;
+    }
+
+    public void setShapeType(String shapeType) {
+        this.shapeType = shapeType;
     }
 }

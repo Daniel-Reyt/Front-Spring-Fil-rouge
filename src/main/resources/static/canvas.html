@@ -8,7 +8,10 @@
 </head>
 <body>
 <div class="container">
-    <button id="getButton" onclick="getAllShape()">take all shapes</button>
+    <div class="row">
+        <button id="getButton" class="btn btn-primary col-lg-6" onclick="getAllShape()">take all shapes</button>
+        <button id="deleteButton" class="btn btn-danger col-lg-6" onclick="deleteAllShape()">delete all shapes</button>
+    </div>
     <canvas id="canvas" style="border-width: 2px; border-color: #000000; border-style: solid; border-radius: 30px; width: 100%; overflow: scroll">
 
     </canvas>

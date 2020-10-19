@@ -41,3 +41,19 @@ function getAllShape() {
             console.log(err)
         })
 }
+
+function deleteAllShape() {
+    fetch('http://localhost:8888/shapes', {
+        method: 'DELETE',
+        headers: {
+            'Content-Type': 'application/json',
+            'Accept': "*/*"
+        }
+    })
+        .then(response => {
+            return response.statusText;
+        })
+        .catch(err => {
+            console.log(err)
+        })
+}

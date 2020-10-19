@@ -77,4 +77,10 @@ public class ShapeController {
         shapeDao.deleteById(id);
         return shapeDao.findAll();
     }
+
+    @ApiOperation(value = "Supprime toutes les formes dans la BDD, a n'utiliser qu'en cas d'éxtrème urgence !")
+    @DeleteMapping(value = "/shapes")
+    public void deleteAllShape() {
+        shapeDao.deleteAll();
+    }
 }

@@ -2,9 +2,7 @@ package com.project.filrouge.Form;
 
 import com.project.filrouge.Job.SquareJob;
 
-import javax.persistence.Entity;
-import javax.persistence.Inheritance;
-import javax.persistence.InheritanceType;
+import javax.persistence.*;
 
 @Entity
 public class Square extends Shape {

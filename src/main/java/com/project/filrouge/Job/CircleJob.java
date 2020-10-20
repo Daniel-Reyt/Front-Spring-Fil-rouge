@@ -2,7 +2,6 @@ package com.project.filrouge.Job;
 
 public class CircleJob {
     int rayon;
-    int diameter;
 
     int posX;
     int posY;
@@ -16,14 +15,6 @@ public class CircleJob {
 
     public void setRayon(int rayon) {
         this.rayon = rayon;
-    }
-
-    public int getDiameter() {
-        return diameter;
-    }
-
-    public void setDiameter(int diameter) {
-        this.diameter = diameter;
     }
 
     public int getPosX() {

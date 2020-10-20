@@ -7,14 +7,12 @@ import javax.persistence.*;
 @Entity
 public class Circle extends Shape {
     public int rayon;
-    public int diameter;
 
     public Circle() {
     }
 
     public Circle(CircleJob job) {
         this.rayon = job.getRayon();
-        this.diameter = getDiameter();
         this.posX = job.getPosX();
         this.posY = job.getPosY();
         this.color = job.getColor();
@@ -31,10 +29,6 @@ public class Circle extends Shape {
 
     public int getDiameter() {
         return rayon * 2;
-    }
-
-    public void setDiameter(int diameter) {
-        this.diameter = getRayon() * 2;
     }
 
     @Override

@@ -26,8 +26,15 @@ public class ShapeController {
     @Autowired
     ShapeDao shapeDao;
 
-    List<Shape> composition;
+    @ApiOperation(value = "Récupère la page de vérification a partir de l'API")
+    @GetMapping(value = "/")
+    public ModelAndView getIndex(){
+        ModelAndView modelAndView = new ModelAndView();
+        modelAndView.setViewName("index");
+        return modelAndView;
+    }
 
+    @ApiOperation(value = "Récupère la page du canvas a partir de l'API")
     @GetMapping(value = "/canvas")
     public ModelAndView getCanvas(){
         ModelAndView modelAndView = new ModelAndView();

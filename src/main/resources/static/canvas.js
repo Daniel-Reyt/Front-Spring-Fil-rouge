@@ -1,3 +1,5 @@
+let isAdmin = false;
+
 const canvas = document.querySelector('canvas');
 canvas.width = 1000;
 canvas.height = 600;
@@ -63,9 +65,7 @@ function getAllShape() {
 
                     getCanvasWithTriangle(data);
                 }
-                if (data.size === null) {
-                    console.error("il n'y as pas de shape a retourner")
-                }
+                isAdmin = true;
             })
         })
         .catch(err => {
@@ -74,20 +74,24 @@ function getAllShape() {
 }
 
 function deleteAllShape() {
-    fetch('http://localhost:8888/shapes', {
-        method: 'DELETE',
-        headers: {
-            'Content-Type': 'application/json',
-            'Accept': "*/*"
-        }
-    })
-        .then(response => {
-            return response.statusText;
-            let canvas = document.querySelector('canvas');
-            var ctx = canvas.getContext('2d');
-            ctx.clearRect()
+    if (isAdmin === true) {
+        fetch('http://localhost:8888/shapes', {
+            method: 'DELETE',
+            headers: {
+                'Content-Type': 'application/json',
+                'Accept': "*/*"
+            }
         })
-        .catch(err => {
-            console.log(err)
-        })
+            .then(response => {
+                return response.statusText;
+                let canvas = document.querySelector('canvas');
+                var ctx = canvas.getContext('2d');
+                ctx.clearRect()
+            })
+            .catch(err => {
+                console.log(err)
+            })
+    } else {
+        console.warn("vous n'avez pas accès a cette route")
+    }
 }

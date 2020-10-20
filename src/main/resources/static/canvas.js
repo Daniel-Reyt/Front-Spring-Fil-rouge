@@ -1,26 +1,37 @@
+const canvas = document.querySelector('canvas');
+canvas.width = 1000;
+canvas.height = 600;
+
+var ctx = canvas.getContext('2d');
+
 function getCanvasWithSquare(data) {
-    const canvas = document.querySelector('canvas');
-    var ctx = canvas.getContext('2d');
 
     ctx.fillStyle = data.color;
     ctx.fillRect(data.posX, data.posY, data.width, data.width)
     ctx.stroke();
 }
 function getCanvasWithRect(data) {
-    const canvas = document.querySelector('canvas');
-    var ctx = canvas.getContext('2d');
-
     ctx.fillStyle = data.color;
     ctx.fillRect(data.posX, data.posY, data.width, data.length)
     ctx.stroke();
 }
 function getCanvasWithCircle(data) {
-    const canvas = document.querySelector('canvas');
-    var ctx = canvas.getContext('2d');
-
     ctx.fillStyle = data.color;
     ctx.arc(data.posX, data.posY, data.rayon, 0, 2 * Math.PI)
+    ctx.fill();
+}
+function getCanvasWithTriangle(data) {
+    ctx.beginPath();
+    ctx.moveTo(data.aPosX, data.aPosY)
+    ctx.lineTo(data.bPosX, data.bPosY)
+    ctx.lineTo(data.cPosX, data.cPosY)
+    ctx.closePath();
+
+    ctx.lineWidth = 2;
     ctx.stroke();
+
+    ctx.fillStyle = data.color;
+    ctx.fill();
 }
 function getAllShape() {
     fetch('http://localhost:8888/shapes', {
@@ -48,7 +59,9 @@ function getAllShape() {
                     getCanvasWithCircle(data)
                 }
                 if (data.shapeType === 'triangle') {
-                    console.log(data.id + ' as pour côté A : ' + data.sizeA + ' cm, as pour côté B : ' + data.sizeB + ' cm, as pour côté C : ' + data.sizeC + ' cm, de couleur : ' + data.color + ', son types est : ' + data.shapeType)
+                    console.log(data.id + ' est de couleur : ' + data.color + ', son types est : ' + data.shapeType + "la position du point A est x : " + data.aPosX + ", y : " + data.aPosY + "la position du point B est x : " + data.bPosX + ", y : " + data.bPosY +"la position du point C est x : " + data.cPosX + ", y : " + data.cPosY)
+
+                    getCanvasWithTriangle(data);
                 }
                 if (data.size === null) {
                     console.error("il n'y as pas de shape a retourner")

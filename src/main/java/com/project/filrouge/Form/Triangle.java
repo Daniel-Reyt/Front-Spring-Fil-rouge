@@ -6,54 +6,82 @@ import javax.persistence.*;
 
 @Entity
 public class Triangle extends Shape {
-
-    //TODO all calc aire and pertimeter for triangle rectangle
-    public int sizeA;
-    public int sizeB;
-    public int sizeC;
+    int aPosX;
+    int aPosY;
+    int bPosX;
+    int bPosY;
+    int cPosX;
+    int cPosY;
 
     public Triangle() {
     }
 
     public Triangle(TriangleJob job) {
-        this.sizeA = job.getSizeA();
-        this.sizeB = job.getSizeB();
-        this.sizeC = job.getSizeC();
+        this.aPosX = job.getPointAposX();
+        this.bPosX = job.getPointBposX();
+        this.cPosX = job.getPointCposX();
+        this.aPosY = job.getPointAposY();
+        this.bPosY = job.getPointBposY();
+        this.cPosY = job.getPointCposY();
         this.color = job.getColor();
         this.shapeType = job.getShapeType();
     }
 
     @Override
     public double getPerimeter() {
-        return getSizeA() + getSizeB() + getSizeC();
+        return 0;
     }
 
     @Override
     public double getAire() {
-        return getSizeB() * getSizeA();
+        return 0;
     }
 
-    public int getSizeA() {
-        return sizeA;
+    public int getaPosX() {
+        return aPosX;
     }
 
-    public void setSizeA(int sizeA) {
-        this.sizeA = sizeA;
+    public void setaPosX(int aPosX) {
+        this.aPosX = aPosX;
     }
 
-    public int getSizeB() {
-        return sizeB;
+    public int getaPosY() {
+        return aPosY;
     }
 
-    public void setSizeB(int sizeB) {
-        this.sizeB = sizeB;
+    public void setaPosY(int aPosY) {
+        this.aPosY = aPosY;
     }
 
-    public int getSizeC() {
-        return sizeC;
+    public int getbPosX() {
+        return bPosX;
     }
 
-    public void setSizeC(int sizeC) {
-        this.sizeC = sizeC;
+    public void setbPosX(int bPosX) {
+        this.bPosX = bPosX;
+    }
+
+    public int getbPosY() {
+        return bPosY;
+    }
+
+    public void setbPosY(int bPosY) {
+        this.bPosY = bPosY;
+    }
+
+    public int getcPosX() {
+        return cPosX;
+    }
+
+    public void setcPosX(int cPosX) {
+        this.cPosX = cPosX;
+    }
+
+    public int getcPosY() {
+        return cPosY;
+    }
+
+    public void setcPosY(int cPosY) {
+        this.cPosY = cPosY;
     }
 }

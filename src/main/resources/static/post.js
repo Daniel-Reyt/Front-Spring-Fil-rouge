@@ -130,11 +130,12 @@ function Triangle() {
          title: "Créer un triangle :",
          icon: "success",
          html:  "<form class='form-group'>" +
-             "<input name='sizeA' id='sizeA' type='number' placeholder='merci de rentrer la taille du côté A' class='form-control'> <br>" +
-             "<input name='sizeB' id='sizeB' type='number' placeholder='merci de rentrer la taille du côté B' class='form-control'> <br>" +
-             "<input name='sizeC' id='sizeC' type='number' placeholder='merci de rentrer la taille du côté C' class='form-control'> <br>" +
-             "<input name='posX' id='posX' type='number' placeholder='merci de rentrer la position X du triangle' class='form-control'> <br>" +
-             "<input name='posY' id='posY' type='number' placeholder='merci de rentrer la position Y du triangle' class='form-control'> <br>" +
+             "<input name='aPosX' id='aPosX' type='number' placeholder='merci de rentrer la position X du point A' class='form-control'> <br>" +
+             "<input name='aPosY' id='aPosY' type='number' placeholder='merci de rentrer la position Y du point A' class='form-control'> <br>" +
+             "<input name='bPosX' id='bPosX' type='number' placeholder='merci de rentrer la position X du point B' class='form-control'> <br>" +
+             "<input name='bPosY' id='bPosY' type='number' placeholder='merci de rentrer la position Y du point B' class='form-control'> <br>" +
+             "<input name='cPosX' id='cPosX' type='number' placeholder='merci de rentrer la position X du point C' class='form-control'> <br>" +
+             "<input name='cPosY' id='cPosY' type='number' placeholder='merci de rentrer la position Y du point C' class='form-control'> <br>" +
              "<input name='color' id='color' type='color' placeholder='merci de rentrer la couleur du triangle' class='form-control'> <br>" +
              "<button onclick='addTri()' class='btn btn-primary'>Submit</button>" +
              "</form>",
@@ -142,11 +143,19 @@ function Triangle() {
      });
  }
  function addTri() {
-     const sizeA = document.getElementById('sizeA').value;
-     const sizeB = document.getElementById('sizeB').value;
-     const sizeC = document.getElementById('sizeC').value;
-     const posX = document.getElementById('posX').value;
-     const posY = document.getElementById('posY').value;
+
+    /** EXEMPLE DE TRIANGLE  :
+     * A : 0 / 10
+     * B : 200 / 0
+     * C : 100 / 200
+     * */
+
+     const aPosX = document.getElementById('aPosX').value;
+     const aPosY = document.getElementById('aPosY').value;
+     const bPosX = document.getElementById('bPosX').value;
+     const bPosY = document.getElementById('bPosY').value;
+     const cPosX = document.getElementById('cPosX').value;
+     const cPosY = document.getElementById('cPosY').value;
      const color = document.getElementById('color').value;
 
      fetch('http://localhost:8888/triangle', {
@@ -156,11 +165,12 @@ function Triangle() {
              'Accept': "*/*"
          },
          body: JSON.stringify({
-             "sizeA": sizeA,
-             "sizeB": sizeB,
-             "sizeC": sizeC,
-             "posX": posX,
-             "posY": posY,
+             "pointAposX": aPosX,
+             "pointAposY": aPosY,
+             "pointBposX": bPosX,
+             "pointBposY": bPosY,
+             "pointCposX": cPosX,
+             "pointCposY": cPosY,
              "color": color,
              "shapeType": 'triangle'
          })

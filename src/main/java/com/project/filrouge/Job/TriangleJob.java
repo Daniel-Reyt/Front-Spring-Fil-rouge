@@ -1,34 +1,62 @@
 package com.project.filrouge.Job;
 
 public class TriangleJob {
-    int sizeA;
-    int sizeB;
-    int sizeC;
+    int pointAposX;
+    int pointBposX;
+    int pointCposX;
+    int pointAposY;
+    int pointBposY;
+    int pointCposY;
+
     String color;
     String shapeType;
 
-    public int getSizeA() {
-        return sizeA;
+    public int getPointAposX() {
+        return pointAposX;
     }
 
-    public void setSizeA(int sizeA) {
-        this.sizeA = sizeA;
+    public void setPointAposX(int pointAposX) {
+        this.pointAposX = pointAposX;
     }
 
-    public int getSizeB() {
-        return sizeB;
+    public int getPointBposX() {
+        return pointBposX;
     }
 
-    public void setSizeB(int sizeB) {
-        this.sizeB = sizeB;
+    public void setPointBposX(int pointBposX) {
+        this.pointBposX = pointBposX;
     }
 
-    public int getSizeC() {
-        return sizeC;
+    public int getPointCposX() {
+        return pointCposX;
     }
 
-    public void setSizeC(int sizeC) {
-        this.sizeC = sizeC;
+    public void setPointCposX(int pointCposX) {
+        this.pointCposX = pointCposX;
+    }
+
+    public int getPointAposY() {
+        return pointAposY;
+    }
+
+    public void setPointAposY(int pointAposY) {
+        this.pointAposY = pointAposY;
+    }
+
+    public int getPointBposY() {
+        return pointBposY;
+    }
+
+    public void setPointBposY(int pointBposY) {
+        this.pointBposY = pointBposY;
+    }
+
+    public int getPointCposY() {
+        return pointCposY;
+    }
+
+    public void setPointCposY(int pointCposY) {
+        this.pointCposY = pointCposY;
     }
 
     public String getColor() {

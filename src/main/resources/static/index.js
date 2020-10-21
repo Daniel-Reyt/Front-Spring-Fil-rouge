@@ -22,17 +22,9 @@ function verifyDataForShape() {
         })
         .then(function (data) {
             data.forEach(function (data) {
-                console.log(data)
-                if (userName === "daniel") {
-                    if (data.username === "daniel") {
-                        window.location.replace("http://localhost:8888/shapes")
-                    }
-                }
-                if (userName === "admin") {
-                    if (data.username === "admin") {
-                        window.location.replace("http://localhost:8888/shapes")
-                    }
-                } else {
+                if (userName === data.username) {
+                    window.location.replace("http://localhost:8888/shapes")
+                } else if (!(userName === data.username)) {
                     console.warn("vous n'avez pas accès a l'API")
                 }
             })
@@ -65,17 +57,9 @@ function verifyDataForH2() {
         })
         .then(function (data) {
             data.forEach(function (data) {
-                console.log(data)
-                if (userName === "daniel") {
-                    if (data.username === "daniel") {
-                        window.location.replace("http://localhost:8888/h2-console")
-                    }
-                }
-                if (userName === "admin") {
-                    if (data.username === "admin") {
-                        window.location.replace("http://localhost:8888/h2-console")
-                    }
-                } else {
+                if (userName === data.username) {
+                    window.location.replace("http://localhost:8888/h2-console")
+                } else if (!(userName === data.username)) {
                     console.warn("vous n'avez pas accès a l'API")
                 }
             })
@@ -108,16 +92,9 @@ function verifyDataForCanvas() {
     })
     .then(function (data) {
         data.forEach(function (data) {
-            if (userName === "daniel") {
-                if (data.username === "daniel") {
-                    window.location.replace("http://localhost:8888/canvas")
-                }
-            }
-            if (userName === "admin") {
-                if (data.username === "admin") {
-                    window.location.replace("http://localhost:8888/canvas")
-                }
-            } else {
+            if (userName === data.username) {
+                window.location.replace("http://localhost:8888/canvas")
+            } else if (!(userName === data.username)) {
                 console.warn("vous n'avez pas accès a l'API")
             }
         })

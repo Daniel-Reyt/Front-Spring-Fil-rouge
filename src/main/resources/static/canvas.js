@@ -95,3 +95,33 @@ function deleteAllShape() {
         console.warn("vous n'avez pas accès a cette route")
     }
 }
+
+function switchCanvasTheme() {
+    let body = document.querySelector("body");
+    let image = document.getElementById("switchImage");
+
+    if (body.style.backgroundColor === "white") {
+        body.style.backgroundColor = "black";
+        image.setAttribute("src", "https://lh3.googleusercontent.com/proxy/wLgcn1wHqufH36UOoxWHYf8wcDEl8QDESciyzadYyFWAHyy0Wwb6BfVoXlMGHOh7SXKlqrJ2wInpV7Vw6fKk28xDcqgAnPMs");
+        image.setAttribute("alt", "thème sombre")
+    } else if (body.style.backgroundColor === "black") {
+        body.style.backgroundColor = "white";
+        image.setAttribute("src", "https://static.thenounproject.com/png/595-200.png");
+        image.setAttribute("alt", "thème clair")
+    }
+}
+
+function switchIndexTheme() {
+    let body = document.querySelector("body");
+    let image = document.getElementById("switchImage");
+
+    if (body.style.backgroundColor === "white") {
+        body.style.backgroundColor = "black";
+        image.setAttribute("src", "https://lh3.googleusercontent.com/proxy/wLgcn1wHqufH36UOoxWHYf8wcDEl8QDESciyzadYyFWAHyy0Wwb6BfVoXlMGHOh7SXKlqrJ2wInpV7Vw6fKk28xDcqgAnPMs");
+        image.setAttribute("alt", "thème sombre")
+    } else if (body.style.backgroundColor === "black") {
+        body.style.backgroundColor = "white";
+        image.setAttribute("src", "https://static.thenounproject.com/png/595-200.png");
+        image.setAttribute("alt", "thème clair")
+    }
+}

@@ -36,7 +36,7 @@ function getCanvasWithTriangle(data) {
     ctx.fill();
 }
 function getAllShape() {
-    fetch('http://localhost:8888/shapes', {
+    fetch('http://10.3.1.62:8888/shapes', {
         method: 'GET',
         headers: {
             'Content-Type': 'application/json',
@@ -75,7 +75,7 @@ function getAllShape() {
 
 function deleteAllShape() {
     if (isAdmin === true) {
-        fetch('http://localhost:8888/shapes', {
+        fetch('http://10.3.1.62:8888/shapes', {
             method: 'DELETE',
             headers: {
                 'Content-Type': 'application/json',

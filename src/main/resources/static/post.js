@@ -19,7 +19,7 @@ function addSq() {
     const color = document.getElementById('color').value;
 
 
-    fetch('http://localhost:8888/square', {
+    fetch('http://10.3.1.62:8888/square', {
         method: 'POST',
         headers: {
             'Content-Type': 'application/json',
@@ -62,7 +62,7 @@ function addSq() {
      const posY = document.getElementById('posY').value;
      const color = document.getElementById('color').value;
 
-     fetch('http://localhost:8888/rectangle', {
+     fetch('http://10.3.1.62:8888/rectangle', {
          method: 'POST',
          headers: {
              'Content-Type': 'application/json',
@@ -104,7 +104,7 @@ function addSq() {
      const posY = document.getElementById('posY').value;
      const color = document.getElementById('color').value;
 
-     fetch('http://localhost:8888/circle', {
+     fetch('http://10.3.1.62:8888/circle', {
      method: 'POST',
      headers: {
          'Content-Type': 'application/json',
@@ -158,7 +158,7 @@ function Triangle() {
      const cPosY = document.getElementById('cPosY').value;
      const color = document.getElementById('color').value;
 
-     fetch('http://localhost:8888/triangle', {
+     fetch('http://10.3.1.62:8888/triangle', {
          method: 'POST',
          headers: {
              'Content-Type': 'application/json',

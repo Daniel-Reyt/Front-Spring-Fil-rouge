@@ -25,7 +25,6 @@ public class Triangle extends Shape {
         this.cPosY = job.getPointCposY();
         this.color = job.getColor();
         this.shapeType = job.getShapeType();
-        this.draw = job.getDraw();
     }
 
     @Override

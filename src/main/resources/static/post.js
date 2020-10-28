@@ -7,6 +7,7 @@ function addCarre() {
             "<input name='posX' id='posX' type='number' placeholder='merci de rentrer la position X du carré' class='form-control'> <br>" +
             "<input name='posY' id='posY' type='number' placeholder='merci de rentrer la position Y du carré' class='form-control'> <br>" +
             "<input name='color' id='color' type='color' placeholder='merci de rentrer la couleur du carré' class='form-control'> <br>" +
+            "<input name='draw' id='draw' type='number' placeholder='merci de rentrer l id du draw' class='form-control'> <br>" +
             "<button onclick='addSq()' class='btn btn-primary'>Submit</button>" +
             "</form>",
         showConfirmButton: false,
@@ -17,6 +18,7 @@ function addSq() {
     const posX = document.getElementById('posX').value;
     const posY = document.getElementById('posY').value;
     const color = document.getElementById('color').value;
+    const draw = document.getElementById('draw').value;
 
 
     fetch('http://localhost:8888/square', {
@@ -30,6 +32,7 @@ function addSq() {
             "posX": posX,
             "posY": posY,
             "width": sizeS,
+            "draw": draw,
             "shapeType": 'square'
         })
     })

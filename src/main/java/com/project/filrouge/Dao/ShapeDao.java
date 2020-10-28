@@ -8,6 +8,4 @@ import java.util.List;
 
 @Repository
 public interface ShapeDao extends JpaRepository<Shape, Integer> {
-    List<Shape> findShapesByDraw(int draw);
-    List<Shape> deleteByDraw(int draw);
 }

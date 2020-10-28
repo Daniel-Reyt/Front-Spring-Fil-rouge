@@ -19,7 +19,6 @@ public class Rectangle extends Shape{
         this.posY = job.getPosY();
         this.color = job.getColor();
         this.shapeType = job.getShapeType();
-        this.draw = job.getDraw();
     }
 
     public int getLength() {

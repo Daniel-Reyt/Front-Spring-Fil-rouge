@@ -1,11 +1,13 @@
 package com.project.filrouge.Controller;
 
+import com.project.filrouge.Dao.DrawDao;
 import com.project.filrouge.Dao.ShapeDao;
 import com.project.filrouge.Form.*;
 import com.project.filrouge.Job.CircleJob;
 import com.project.filrouge.Job.RectangleJob;
 import com.project.filrouge.Job.SquareJob;
 import com.project.filrouge.Job.TriangleJob;
+import com.project.filrouge.draw.Draw;
 import io.swagger.annotations.Api;
 import io.swagger.annotations.ApiOperation;
 import io.swagger.models.Model;
@@ -25,6 +27,9 @@ public class ShapeController {
 
     @Autowired
     ShapeDao shapeDao;
+
+    @Autowired
+    DrawDao drawDao;
 
     @ApiOperation(value = "Récupère la page de vérification a partir de l'API")
     @GetMapping(value = "/")
@@ -57,6 +62,10 @@ public class ShapeController {
     @ApiOperation(value = "Ajoute un carré dans la BDD")
     @PostMapping(value = "/square")
     public Shape createSquare(@RequestBody SquareJob square){
+        Square s = new Square(square);
+        shapeDao.save(s);
+        Draw d = drawDao.findById(square.getDraw()).get();
+        d.getShapes().add(s);
         return shapeDao.save(new Square(square));
     }
 

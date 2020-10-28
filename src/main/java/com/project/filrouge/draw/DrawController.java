@@ -43,12 +43,13 @@ public class DrawController {
 
     @DeleteMapping(value = "/draw/shapeDraw_id")
     public List<Draw> deleteDrawById(@RequestBody int draw) {
-        shapeDao.deleteByDraw(draw);
+        drawDao.deleteById(draw);
         return drawDao.findAll();
     }
 
     @GetMapping(value = "/draw/shapeDraw_id")
     public List<Shape> getShapeByDrawId(@RequestHeader int draw) {
-        return shapeDao.findShapesByDraw(draw);
+       System.out.println(drawDao.findById(draw).get().shapes);
+        return drawDao.findById(draw).get().shapes;
     }
 }

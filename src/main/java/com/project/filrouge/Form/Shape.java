@@ -1,5 +1,7 @@
 package com.project.filrouge.Form;
 
+import com.project.filrouge.draw.Draw;
+
 import javax.persistence.*;
 import java.util.List;
 
@@ -13,6 +15,7 @@ public abstract class Shape {
     String color;
     @Column(nullable = false)
     String shapeType;
+    int draw;
     int posX;
     int posY;
 
@@ -57,5 +60,13 @@ public abstract class Shape {
 
     public void setShapeType(String shapeType) {
         this.shapeType = shapeType;
+    }
+
+    public int getDraw() {
+        return draw;
+    }
+
+    public void setDraw(int draw) {
+        this.draw = draw;
     }
 }

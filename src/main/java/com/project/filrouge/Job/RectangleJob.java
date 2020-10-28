@@ -5,6 +5,7 @@ public class RectangleJob {
     int width;
     int posX;
     int posY;
+    int Draw;
     String color;
     String shapeType;
 
@@ -54,5 +55,13 @@ public class RectangleJob {
 
     public void setShapeType(String shapeType) {
         this.shapeType = shapeType;
+    }
+
+    public int getDraw() {
+        return Draw;
+    }
+
+    public void setDraw(int draw) {
+        Draw = draw;
     }
 }

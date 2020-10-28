@@ -8,6 +8,8 @@ public class TriangleJob {
     int pointBposY;
     int pointCposY;
 
+    int Draw;
+
     String color;
     String shapeType;
 
@@ -73,5 +75,13 @@ public class TriangleJob {
 
     public void setShapeType(String shapeType) {
         this.shapeType = shapeType;
+    }
+
+    public int getDraw() {
+        return Draw;
+    }
+
+    public void setDraw(int draw) {
+        Draw = draw;
     }
 }

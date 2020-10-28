@@ -1,3 +1,4 @@
+
 function verifyUserForShape() {
     Swal.fire({
         title: "veuillez renseigner votre pseudo",
@@ -103,3 +104,32 @@ function verifyDataForCanvas() {
 function redirectToCanvas() {
     verifyUserForCanvas()
 }
+
+function createCanvas() {
+    swal.fire({
+        title: "Créer un canvas",
+        html:  "<form class='form-group' id='form-group'>" +
+                "<input name='nameCanvas' id='nameCanvas' type='text' placeholder='merci de renseigner le nom du canvas' class='form-control'> <br>" +
+                "<button type='button' onclick='addCanvas()' class='btn btn-primary'>Submit</button>" +
+                "</form>",
+    })
+}
+function addCanvas() {
+    const canvasName = document.getElementById('nameCanvas').value;
+
+    fetch('http://localhost:8888/draw', {
+        method: 'POST',
+        headers: {
+            'Content-Type': 'application/json',
+            'Accept': "*/*"
+        },
+        body: JSON.stringify({
+            "name": canvasName,
+        })
+    })
+        .then(response => {
+            console.log(response)
+        })
+        .catch(err => {
+            console.log(err)
+        })}

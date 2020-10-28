@@ -36,11 +36,24 @@ function getCanvasWithTriangle(data) {
     ctx.fill();
 }
 function getAllShape() {
-    fetch('http://10.3.1.62:8888/shapes', {
+    Swal.fire( {
+        title: "Merci de renseigner l'id du dessin a récupérer",
+        html: "<form class='form-group'>" +
+            "<input name='draw' id='draw' type='number' placeholder='merci de rentrer l id du dessin' class='form-control'> <br>" +
+            "<button onclick='getShape()' class='btn btn-primary'>Submit</button>" +
+            "</form>",
+        showConfirmButton: false,
+    })
+}
+function getShape() {
+    const draw = document.getElementById('draw').value;
+
+    fetch('http://localhost:8888/draw/shapeDraw_id', {
         method: 'GET',
         headers: {
             'Content-Type': 'application/json',
-            'Accept': "*/*"
+            'Accept': "*/*",
+            "draw": draw
         }
     })
         .then(response => {
@@ -61,7 +74,7 @@ function getAllShape() {
                     getCanvasWithCircle(data)
                 }
                 if (data.shapeType === 'triangle') {
-                    console.log(data.id + ' est de couleur : ' + data.color + ', son types est : ' + data.shapeType + "la position du point A est x : " + data.aPosX + ", y : " + data.aPosY + "la position du point B est x : " + data.bPosX + ", y : " + data.bPosY +"la position du point C est x : " + data.cPosX + ", y : " + data.cPosY)
+                    console.log(data.id + ' est de couleur : ' + data.color + ', son types est : ' + data.shapeType + "la position du point A est x : " + data.aPosX + ", y : " + data.aPosY + "la position du point B est x : " + data.bPosX + ", y : " + data.bPosY + "la position du point C est x : " + data.cPosX + ", y : " + data.cPosY)
 
                     getCanvasWithTriangle(data);
                 }
@@ -72,14 +85,28 @@ function getAllShape() {
             console.log(err)
         })
 }
-
 function deleteAllShape() {
+    Swal.fire( {
+        title: "Merci de renseigner l'id du dessin a supprimer",
+        html: "<form class='form-group'>" +
+            "<input name='draw' id='draw' type='number' placeholder='merci de rentrer l id du dessin' class='form-control'> <br>" +
+            "<button onclick='deleteAllShapeByDraw()' class='btn btn-primary'>Submit</button>" +
+            "</form>",
+        showConfirmButton: false,
+    })
+}
+
+function deleteAllShapeByDraw() {
+    const draw = document.getElementById('draw').value;
     if (isAdmin === true) {
-        fetch('http://10.3.1.62:8888/shapes', {
+        fetch('http://localhost:8888/draw/shapeDraw_id', {
             method: 'DELETE',
             headers: {
                 'Content-Type': 'application/json',
                 'Accept': "*/*"
+            },
+            body: {
+                "draw": draw
             }
         })
             .then(response => {
@@ -102,7 +129,7 @@ function switchCanvasTheme() {
 
     if (body.style.backgroundColor === "white") {
         body.style.backgroundColor = "black";
-        image.setAttribute("src", "https://lh3.googleusercontent.com/proxy/wLgcn1wHqufH36UOoxWHYf8wcDEl8QDESciyzadYyFWAHyy0Wwb6BfVoXlMGHOh7SXKlqrJ2wInpV7Vw6fKk28xDcqgAnPMs");
+        image.setAttribute("src", "https://lh3.googleusercontent.com/proxy/6DvJwbZ5wk66mcd9IEevtqqEip0SZFGe5SbaMkTjagwceCDdDIlHyWiGjc_TDA6SUjtgZCwzY23TxTUgWHgOHPiu0-boW3YX");
         image.setAttribute("alt", "thème sombre")
     } else if (body.style.backgroundColor === "black") {
         body.style.backgroundColor = "white";
@@ -117,7 +144,7 @@ function switchIndexTheme() {
 
     if (body.style.backgroundColor === "white") {
         body.style.backgroundColor = "black";
-        image.setAttribute("src", "https://lh3.googleusercontent.com/proxy/wLgcn1wHqufH36UOoxWHYf8wcDEl8QDESciyzadYyFWAHyy0Wwb6BfVoXlMGHOh7SXKlqrJ2wInpV7Vw6fKk28xDcqgAnPMs");
+        image.setAttribute("src", "https://lh3.googleusercontent.com/proxy/6DvJwbZ5wk66mcd9IEevtqqEip0SZFGe5SbaMkTjagwceCDdDIlHyWiGjc_TDA6SUjtgZCwzY23TxTUgWHgOHPiu0-boW3YX");
         image.setAttribute("alt", "thème sombre")
     } else if (body.style.backgroundColor === "black") {
         body.style.backgroundColor = "white";

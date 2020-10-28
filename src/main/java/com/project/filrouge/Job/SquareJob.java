@@ -6,6 +6,7 @@ public class SquareJob {
     int posY;
     String color;
     String shapeType;
+    int Draw;
 
     public int getwidth() {
         return width;
@@ -45,5 +46,13 @@ public class SquareJob {
 
     public void setShapeType(String shapeType) {
         this.shapeType = shapeType;
+    }
+
+    public int getDraw() {
+        return Draw;
+    }
+
+    public void setDraw(int draw) {
+        Draw = draw;
     }
 }

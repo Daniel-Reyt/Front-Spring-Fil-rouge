@@ -1,5 +1,6 @@
 package com.project.filrouge.User;
 
+import com.project.filrouge.Dao.UsersDao;
 import io.swagger.annotations.Api;
 import io.swagger.annotations.ApiOperation;
 import org.springframework.beans.factory.annotation.Autowired;

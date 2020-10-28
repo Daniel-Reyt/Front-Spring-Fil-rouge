@@ -6,6 +6,8 @@ public class CircleJob {
     int posX;
     int posY;
 
+    int Draw;
+
     String color;
     String shapeType;
 
@@ -49,4 +51,11 @@ public class CircleJob {
         this.shapeType = shapeType;
     }
 
+    public int getDraw() {
+        return Draw;
+    }
+
+    public void setDraw(int draw) {
+        Draw = draw;
+    }
 }

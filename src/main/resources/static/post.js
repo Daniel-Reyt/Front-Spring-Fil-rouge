@@ -19,7 +19,7 @@ function addSq() {
     const color = document.getElementById('color').value;
 
 
-    fetch('http://10.3.1.62:8888/square', {
+    fetch('http://localhost:8888/square', {
         method: 'POST',
         headers: {
             'Content-Type': 'application/json',
@@ -62,7 +62,7 @@ function addSq() {
      const posY = document.getElementById('posY').value;
      const color = document.getElementById('color').value;
 
-     fetch('http://10.3.1.62:8888/rectangle', {
+     fetch('http://localhost:8888/rectangle', {
          method: 'POST',
          headers: {
              'Content-Type': 'application/json',
@@ -104,7 +104,7 @@ function addSq() {
      const posY = document.getElementById('posY').value;
      const color = document.getElementById('color').value;
 
-     fetch('http://10.3.1.62:8888/circle', {
+     fetch('http://localhost:8888/circle', {
      method: 'POST',
      headers: {
          'Content-Type': 'application/json',
@@ -158,7 +158,7 @@ function Triangle() {
      const cPosY = document.getElementById('cPosY').value;
      const color = document.getElementById('color').value;
 
-     fetch('http://10.3.1.62:8888/triangle', {
+     fetch('http://localhost:8888/triangle', {
          method: 'POST',
          headers: {
              'Content-Type': 'application/json',
@@ -182,3 +182,65 @@ function Triangle() {
              console.log(err)
          })
  }
+function user() {
+    Swal.fire({
+        title: "Créer un user :",
+        icon: "success",
+        html:  "<form class='form-group'>" +
+            "<input name='pseudo' id='pseudo' type='text' placeholder='merci de rentrer le nom du user' class='form-control'> <br>" +
+            "<button onclick='addUser()' class='btn btn-primary'>Submit</button>" +
+            "</form>",
+        showConfirmButton: false,
+    })
+}
+function addUser() {
+    const userName = document.getElementById('pseudo').value;
+
+    fetch('http://localhost:8888/user', {
+        method: 'POST',
+        headers: {
+            'Content-Type': 'application/json',
+            'Accept': "*/*"
+        },
+        body: JSON.stringify({
+            "userName": userName,
+            "isAdmin": false
+        })
+    })
+        .then(response => {
+            console.log(response)
+        })
+        .catch(err => {
+            console.log(err)
+        })
+}
+function addDraw() {
+    Swal.fire({
+        title: "Créer un Dessin :",
+        icon: "success",
+        html:  "<form class='form-group'>" +
+            "<input name='drawName' id='drawName' type='text' placeholder='merci de rentrer le nom du dessin' class='form-control'> <br>" +
+            "<button onclick='addNewDraw()' class='btn btn-primary'>Submit</button>" +
+            "</form>",
+        showConfirmButton: false,
+    })
+}
+function addNewDraw() {
+    const drawName = document.getElementById('drawName').value;
+    fetch('http://localhost:8888/draw', {
+        method: 'POST',
+        headers: {
+            'Content-Type': 'application/json',
+            'Accept': "*/*"
+        },
+        body: JSON.stringify({
+            "name": drawName,
+        })
+    })
+        .then(response => {
+            console.log(response)
+        })
+        .catch(err => {
+            console.log(err)
+        })
+}

@@ -78,6 +78,7 @@ public class ShapeController {
         return shapeDao.save(new Triangle(triangle));
     }
 
+
     @ApiOperation(value = "Supprime une forme dans la BDD en fonction de son id")
     @DeleteMapping(value = "/shapes/{id}")
     public List<Shape> deleteById(@PathVariable int id) {

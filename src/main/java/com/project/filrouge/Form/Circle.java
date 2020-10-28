@@ -9,6 +9,7 @@ public class Circle extends Shape {
     public int rayon;
 
     public Circle() {
+
     }
 
     public Circle(CircleJob job) {
@@ -17,6 +18,7 @@ public class Circle extends Shape {
         this.posY = job.getPosY();
         this.color = job.getColor();
         this.shapeType = job.getShapeType();
+        this.draw = job.getDraw();
     }
 
     public int getRayon() {
